@@ -25,7 +25,7 @@ public MainView() {
     addButton.addClickShortcut(Key.ENTER); 
 
     add( 
-      new H1("Vaadin Todo"),
+      new H1("Arthur Viado"),
       todosList,
       new HorizontalLayout(
         taskField,
