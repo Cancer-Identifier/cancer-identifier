@@ -19,7 +19,7 @@ public class MainView extends VerticalLayout {
 		Button addButton = new Button("Addd");
 		addButton.addClickListener(click -> 
 			addButton.getUI().ifPresent(ui -> 
-			ui.navigate("Login")));
+			ui.navigate("app-cadastro")));
 
 		addButton.addClickShortcut(Key.ENTER);
 
