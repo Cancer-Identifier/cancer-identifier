@@ -16,13 +16,13 @@ public class MainView extends VerticalLayout {
 	public MainView() {
 		VerticalLayout todosList = new VerticalLayout();
 		TextField taskField = new TextField();
-		Button addButton = new Button("Addd");
+		Button addButton = new Button("Entrar");
 		addButton.addClickListener(click -> 
 			addButton.getUI().ifPresent(ui -> 
-			ui.navigate("app-cadastro")));
+			ui.navigate("login")));
 
 		addButton.addClickShortcut(Key.ENTER);
 
-		add(new H1("Arthur Viado"), todosList, new HorizontalLayout(taskField, addButton));
+		add(new H1("Cancer-Identifier"), todosList, new HorizontalLayout(taskField, addButton));
 	}
 }
