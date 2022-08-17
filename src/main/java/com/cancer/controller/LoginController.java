@@ -16,8 +16,7 @@ public class LoginController extends VerticalLayout  {
             .set("background-color", "var(--lumo-contrast-5pct)")
             .set("display", "flex")
             .set("justify-content", "center")
-            .set("padding", "var(--lumo-space-l)")
-        	.set("form-title", "teste");
+            .set("padding", "var(--lumo-space-l)");
 
         // tag::snippet[]
         LoginForm loginForm = new LoginForm();
