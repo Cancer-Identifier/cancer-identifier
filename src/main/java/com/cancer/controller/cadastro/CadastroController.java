@@ -1,19 +1,14 @@
-package com.cancer.controller;
+package com.cancer.controller.cadastro;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
 
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.combobox.ComboBox;
-import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.component.formlayout.FormLayout.ResponsiveStep;
-import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
@@ -22,40 +17,63 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.NumberField;
 import com.vaadin.flow.component.textfield.PasswordField;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.data.value.ValueChangeMode;
+import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
-@Route("app-cadastro")
+@Route(value = CadastroController.ROUTE)
+@PageTitle("Cadastro")
 public class CadastroController extends VerticalLayout {
 
-	private static final long serialVersionUID = 1L;
-	private Grid<Integer> grid = new Grid<>();
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4824780765428606387L;
 
-	private List<String> items = new ArrayList<>(Arrays.asList("Secretário(a)", "Médico(a)"));
+	public static final String ROUTE = "app-cadastro";
+	
+	private List<String> items = new ArrayList<>(Arrays.asList(TipoUsuario.MEDICO.getDescricao(), TipoUsuario.SECRETARIA.getDescricao()));
 	private Icon checkIcon;
 	private Span passwordStrengthText;
 	private TextField crm = new TextField("Crm");
 
 	public CadastroController() {
-
+		
 		getStyle().set("background-color", "var(--lumo-contrast-5pct)").set("margin", "50");
+		
+		ComboBox<String> comboBox = new ComboBox<>("Usuário");
+		comboBox.setAllowCustomValue(true);
+		comboBox.setItems(items);
+		add(comboBox);
 
 		TextField firstName = new TextField("Nome");
+		firstName.setPlaceholder("João");
+		add(firstName);
+		
 		TextField lastName = new TextField("Sobrenome");
-		TextField username = new TextField("Nome de usuário");
+		lastName.setPlaceholder("Antônio");
+		add(lastName);
+		
 		TextField email = new TextField("E-mail");
+		email.setPlaceholder("joao.antonio@cancer.com");
+		add(email);
+		
 		NumberField number = new NumberField("Telefone");
+		number.setPlaceholder("(xx)xxxxx-xxxx");
+		add(number);
+		
 		NumberField cpf = new NumberField("CPF");
+		cpf.setPlaceholder("xxx.xxx.xxx-xx");
+		add(cpf);
+		
 		TextField data = new TextField("Data de Nascimento");
+		data.setPlaceholder("xx/xx/xxxx");
+		add(data);
 
-		PasswordField passwordField = new PasswordField();
-		passwordField.setLabel("Senha");
-		passwordField.setRevealButtonVisible(false);
-
-		passwordField.setHelperText(
-				"Uma senha deve ter pelo menos 8 caracteres. Tem que ter pelo menos uma letra e um dígito.");
+		PasswordField passwordField = new PasswordField("Senha");
+		passwordField.setHelperText("Uma senha deve ter pelo menos 8 caracteres. Tem que ter pelo menos uma letra e um dígito.");
 		passwordField.setPattern("^(?=.*[0-9])(?=.*[a-zA-Z]).{8}.*$");
 		passwordField.setErrorMessage("Não é uma senha válida");
+		add(passwordField);
 
 		checkIcon = VaadinIcon.CHECK.create();
 		checkIcon.setVisible(false);
@@ -64,55 +82,22 @@ public class CadastroController extends VerticalLayout {
 
 		Div passwordStrength = new Div();
 		passwordStrengthText = new Span();
-		passwordStrength.add(new Text(" Força da senha: "), passwordStrengthText);
+		passwordStrength.add(new Text("Força da senha: "), passwordStrengthText);
 		passwordField.setHelperComponent(passwordStrength);
-
-		add(passwordField);
-
-		passwordField.setValueChangeMode(ValueChangeMode.EAGER);
-		passwordField.addValueChangeListener(e -> {
-			String password = e.getValue();
-			updateHelper(password);
-		});
+		passwordField.addValueChangeListener(e -> updateHelper(e.getValue()));
 
 		updateHelper("");
 
 		PasswordField confirmPassword = new PasswordField("Confirmar senha");
-
-		ComboBox<String> comboBox = new ComboBox<>("Usuário");
-		comboBox.setAllowCustomValue(true);
-		comboBox.addCustomValueSetListener(e -> {
-			String customValue = e.getDetail();
-			items.add(customValue);
-			comboBox.setItems(items);
-			comboBox.setValue(customValue);
-		});
-		add(comboBox);
-		comboBox.setItems(items);
-		comboBox.setHelperText("Selecione o usuário de registro");
-
-		comboBox.addCustomValueSetListener(e -> {
-			String teste = e.getDetail();
-			atualizarCrm(teste);
-		});
-
-		FormLayout formLayout = new FormLayout();
-		formLayout.add(firstName, lastName, username, crm, number, email, data, cpf, passwordField, confirmPassword);
-		formLayout.setResponsiveSteps(new ResponsiveStep("0", 1), new ResponsiveStep("150px", 2));
-		formLayout.setColspan(crm, 1);
-
+		add(confirmPassword);
+		
 		Button createAccount = new Button("Criar conta");
 		createAccount.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+		
 		Button cancel = new Button("Cancelar");
 
 		HorizontalLayout buttonLayout = new HorizontalLayout(createAccount, cancel);
-
-		setPadding(false);
-		add(formLayout, buttonLayout);
-
-		grid.addColumn(i -> i).setHeader("Number");
-		grid.addColumn(i -> new Image("../theme/ajax-loader.gif", "alt text")).setHeader("Preview");
-		grid.setItems(IntStream.range(1, 21).boxed());
+		add(buttonLayout);
 
 	}
 
