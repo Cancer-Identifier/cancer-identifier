@@ -1,6 +1,6 @@
 package com.cancer.controller.cadastro;
 
-import com.cancer.home.TelaInicial;
+import com.cancer.home.TelaInicialController;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.login.LoginForm;
 import com.vaadin.flow.component.login.LoginI18n;
@@ -24,15 +24,14 @@ public class LoginController extends VerticalLayout {
         LoginForm loginForm = new LoginForm();
         LoginI18n i18n = LoginI18n.createDefault();
         setSizeFull();
-        setJustifyContentMode(JustifyContentMode.CENTER);
+        setJustifyContentMode(JustifyContentMode.START);
         setAlignItems(Alignment.CENTER);
         
         LoginI18n.Form i18nForm = i18n.getForm();
         i18nForm.setTitle("Entrar");
         i18nForm.setUsername("Usuário");
         i18nForm.setPassword("Senha");
-        i18nForm.setSubmit("Entrar");
-        i18nForm.setForgotPassword("Esqueceu sua senha?");
+        i18nForm.setForgotPassword("Esqueceu sua senha");
         
         loginForm.setI18n(i18n);
         add(new H1("CANCER IDENTIFIER"), loginForm);
@@ -40,12 +39,10 @@ public class LoginController extends VerticalLayout {
         logar(loginForm);
         
         loginForm.getElement().setAttribute("no-autofocus", "");
-        
     }
 
 	private void logar(LoginForm loginForm) {
-		loginForm.addLoginListener(click -> 
-        loginForm.getUI().ifPresent(ui -> 
-			ui.navigate(TelaInicial.ROUTE)));
+		loginForm.addLoginListener(click -> loginForm.getUI().ifPresent(ui -> ui.navigate(TelaInicialController.ROUTE)));
 	}
+	
 }
