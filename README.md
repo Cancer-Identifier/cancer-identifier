@@ -10,5 +10,6 @@
 ### Rodar o Projeto
 
 - Clonar o projeto no GitHub Desktop
-- No Eclipse, ir em File > Import > Git > Projects from Git
+- No Eclipse, ir em File > Import > Git > Projects from Git.
+- Clicar com o botão direito no projeto, no package Explorer do lado esquerdo, Run as > Java Application
 
