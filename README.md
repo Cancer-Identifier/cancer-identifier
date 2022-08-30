@@ -1,19 +1,16 @@
-# Project Base for Vaadin and Spring Boot
+# Configuração da máquina para rodar o projeto
 
-This project can be used as a starting point to create your own Vaadin application with Spring Boot.
-It contains all the necessary configuration and some placeholder files to get you started.
+- Utilizar Eclipse IDE 2022.06+
+- Utilizar GitHub Desktop pra atualizar o projeto no GitHub.
+- Ter Java instalado na máquina.
+- No eclipse, instalar a extensão do SpringBoot para rodar o programa.
+- Criar uma pasta "Workspace" onde deverá conter o Eclipse, e o repositório clonado do GitHub.
 
-The best way to create your own project based on this starter is via [start.
-vaadin.com](https://start.vaadin.com/).
+### Rodar o Projeto
 
-## Running the Application
-The project is a standard Maven project. To run it from the command line, type `mvn` and open http://localhost:8080 in your browser.
+- Clonar o projeto no GitHub Desktop
+- No Eclipse, ir em File > Import > Git > Projects from Git
 
-You can also import the project to your IDE of choice as you would with any
-Maven project. Read more on [how to set up a development environment for
-Vaadin projects](https://vaadin.com/docs/latest/guide/install) (Windows, Linux, macOS).
-
-### Running Integration Tests
 
 Integration tests are implemented using [Vaadin TestBench](https://vaadin.com/testbench). The tests take a few minutes to run and are therefore included in a separate Maven profile. We recommend running tests with a production build to minimize the chance of development time toolchains affecting test stability. To run the tests using Google Chrome, execute
 
