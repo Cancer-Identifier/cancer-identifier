@@ -5,7 +5,7 @@
 - Utilizar GitHub Desktop pra atualizar o projeto no GitHub.
 - Ter Java instalado na máquina.
 - No eclipse, instalar a extensão do SpringBoot para rodar o programa.
-- Criar uma variável de ambiente do Java JAVA_HOME
+- Criar uma variável de ambiente do Java JAVA_HOME em Windows > Variáveis de Ambiente > botão inferior direito "Variáveis de ambiente" > Variáveis do Sistema. A variável deve apontar para onde o Java está instalado.
 
 ### Rodar o Projeto
 
