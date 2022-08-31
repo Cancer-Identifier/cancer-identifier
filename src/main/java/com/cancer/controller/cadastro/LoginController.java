@@ -20,6 +20,12 @@ public class LoginController extends VerticalLayout {
 	public static final String ROUTE = "";
 
 	public LoginController() {
+		
+		getStyle()
+        .set("background", "#FF00FF")
+        .set("display", "flex")
+        .set("justify-content", "center")
+        .set("padding", "var(--lumo-space-l)");
 
         LoginForm loginForm = new LoginForm();
         LoginI18n i18n = LoginI18n.createDefault();
