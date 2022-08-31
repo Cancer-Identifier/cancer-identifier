@@ -7,9 +7,10 @@
 - No eclipse, instalar a extensão do SpringBoot para rodar o programa.
 - Baixar o Maven 6.8.2 e adicionar na pasta Dev.
 
-### Rodar o Projeto
+# Rodar o Projeto
 
 - Clonar o projeto no GitHub Desktop
 - No Eclipse, ir em File > Import > Maven Project > Existing Maven Project.
 - Após importar o projeto, clicar com o botão direito no projeto, no package Explorer do lado esquerdo, Run as > SpringBoot application.
+- Ao rodar o projeto pela primeira vez, é provável que de erro ao tentar instalar o npm. Precisa parar o projeto e realizar o processo do ponto acima.
 
