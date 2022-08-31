@@ -18,4 +18,9 @@
 
 - Ir em Branch > New branch... e dar um nome à branch
 - Clicar em Publish Branch.
+- Ao commitar, informar o que foi alterado na descrição.
+- Após commitar, mudar para branch MASTER e verificar que ela está atualizada.
+- Voltar pra sua branch, clicar em branch > rebase current branch.
+- Alterar para master, ir em branch > Merge into... Após realizar esses processos, ir em Current Branch e excluir a branch que criou e marcar a opção "Yes, delete this branch...".
+
 
