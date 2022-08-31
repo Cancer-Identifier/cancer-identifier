@@ -14,3 +14,8 @@
 - Após importar o projeto, clicar com o botão direito no projeto, no package Explorer do lado esquerdo, Run as > SpringBoot application.
 - Ao rodar o projeto pela primeira vez, é provável que de erro ao tentar instalar o npm. Precisa parar o projeto e realizar o processo do ponto acima.
 
+# Processo feito no GitHub Desktop
+
+- Ir em Branch > New branch... e dar um nome à branch
+- Clicar em Publish Branch.
+
