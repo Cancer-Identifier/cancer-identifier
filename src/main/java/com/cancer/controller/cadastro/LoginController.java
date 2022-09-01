@@ -24,7 +24,7 @@ public class LoginController extends VerticalLayout {
 		//TESTEASD
 		
 		getStyle()
-        .set("background", "#FF00FF")
+        .set("background", "#A34CD8")
         .set("display", "flex")
         .set("justify-content", "center")
         .set("padding", "var(--lumo-space-l)");
