@@ -35,6 +35,8 @@ public class LoginController extends VerticalLayout {
         setJustifyContentMode(JustifyContentMode.START);
         setAlignItems(Alignment.CENTER);
         
+        loginForm.addForgotPasswordListener(e -> loginForm.getUI().ifPresent(ui -> ui.navigate(EsquecerSenha.ROUTE)));
+        
         LoginI18n.Form i18nForm = i18n.getForm();
         i18nForm.setTitle("Entrar");
         i18nForm.setUsername("Usuário");
@@ -47,6 +49,8 @@ public class LoginController extends VerticalLayout {
         logar(loginForm);
         
         loginForm.getElement().setAttribute("no-autofocus", "");
+        
+        
     }
 
 	private void logar(LoginForm loginForm) {
