@@ -1,7 +1,8 @@
-package com.cancer.home;
+package com.cancer.controller.home;
 
 import com.cancer.controller.cadastro.CadastroController;
 import com.cancer.controller.cadastro.LoginController;
+import com.cancer.controller.paciente.CadastrarPacienteController;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H1;
@@ -32,6 +33,11 @@ public class TelaInicialController extends VerticalLayout {
 		btnCadastrar.setWidth(250, Unit.PIXELS);
 		btnCadastrar.addClickListener(click -> btnCadastrar.getUI().ifPresent(ui -> ui.navigate(CadastroController.ROUTE)));
 		add(btnCadastrar);
+		
+		Button btnCadastrarPaciente = new Button("Cadastrar paciente");
+		btnCadastrarPaciente.setWidth(250, Unit.PIXELS);
+		btnCadastrarPaciente.addClickListener(click -> btnCadastrar.getUI().ifPresent(ui -> ui.navigate(CadastrarPacienteController.ROUTE)));
+		add(btnCadastrarPaciente);
 		
 		Button btnSair = new Button("Sair");
 		btnSair.setWidth(250, Unit.PIXELS);

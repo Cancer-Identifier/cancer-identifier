@@ -1,6 +1,6 @@
 package com.cancer.controller.cadastro;
 
-import com.cancer.home.TelaInicialController;
+import com.cancer.controller.home.TelaInicialController;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.login.LoginForm;
 import com.vaadin.flow.component.login.LoginI18n;
@@ -22,35 +22,29 @@ public class LoginController extends VerticalLayout {
 	public LoginController() {
 		
 		//TESTEASD
-		
-		getStyle()
-        .set("background", "#A34CD8")
-        .set("display", "flex")
-        .set("justify-content", "center")
-        .set("padding", "var(--lumo-space-l)");
 
+		setSizeFull();
+		setJustifyContentMode(JustifyContentMode.START);
+		setAlignItems(Alignment.CENTER);
+		
+		H1 titulo = new H1("CANCER IDENTIFIER");
+		titulo.getStyle().set("color", "#A34CD8");
+		add(titulo);
+		
         LoginForm loginForm = new LoginForm();
         LoginI18n i18n = LoginI18n.createDefault();
-        setSizeFull();
-        setJustifyContentMode(JustifyContentMode.START);
-        setAlignItems(Alignment.CENTER);
-        
-        loginForm.addForgotPasswordListener(e -> loginForm.getUI().ifPresent(ui -> ui.navigate(EsquecerSenha.ROUTE)));
-        
+
         LoginI18n.Form i18nForm = i18n.getForm();
         i18nForm.setTitle("Entrar");
         i18nForm.setUsername("Usuário");
         i18nForm.setPassword("Senha");
         i18nForm.setForgotPassword("Esqueceu sua senha");
-        
+        loginForm.addForgotPasswordListener(e -> loginForm.getUI().ifPresent(ui -> ui.navigate(EsquecerSenhaController.ROUTE)));
         loginForm.setI18n(i18n);
-        add(new H1("CANCER IDENTIFIER"), loginForm);
         
         logar(loginForm);
         
-        loginForm.getElement().setAttribute("no-autofocus", "");
-        
-        
+        add(loginForm);
     }
 
 	private void logar(LoginForm loginForm) {

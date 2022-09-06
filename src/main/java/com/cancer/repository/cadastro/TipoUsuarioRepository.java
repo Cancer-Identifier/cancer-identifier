@@ -1,6 +1,6 @@
-package com.cancer.controller.cadastro;
+package com.cancer.repository.cadastro;
 
-public enum TipoUsuario {
+public enum TipoUsuarioRepository {
 
 	SECRETARIA(1, "Secretário(a)"),
 	MEDICO(2, "Médico(a)");
@@ -8,7 +8,7 @@ public enum TipoUsuario {
 	private int codigo;
 	private String descricao;
 	
-	private TipoUsuario(int codigo, String descricao) {
+	private TipoUsuarioRepository(int codigo, String descricao) {
 		this.codigo = codigo;
 		this.descricao = descricao;
 	}

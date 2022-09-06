@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.cancer.home.TelaInicialController;
+import com.cancer.controller.home.TelaInicialController;
+import com.cancer.repository.cadastro.TipoUsuarioRepository;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
@@ -35,14 +36,13 @@ public class CadastroController extends VerticalLayout {
 	public static final String ROUTE = "app-cadastro";
 
 	private List<String> items = new ArrayList<>(
-			Arrays.asList(TipoUsuario.MEDICO.getDescricao(), TipoUsuario.SECRETARIA.getDescricao()));
+			Arrays.asList(TipoUsuarioRepository.MEDICO.getDescricao(), TipoUsuarioRepository.SECRETARIA.getDescricao()));
 	private Icon checkIcon;
 	private Span passwordStrengthText;
 
 	public CadastroController() {
 
 		setSizeFull();
-//		setWidth(2000, Unit.PIXELS);
 		setJustifyContentMode(JustifyContentMode.CENTER);
 		setAlignItems(Alignment.CENTER);
 

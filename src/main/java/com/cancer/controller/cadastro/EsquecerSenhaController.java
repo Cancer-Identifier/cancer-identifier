@@ -11,42 +11,41 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
-@Route(value = EsquecerSenha.ROUTE)
+@Route(value = EsquecerSenhaController.ROUTE)
 @PageTitle("Recuperação de Senha")
-public class EsquecerSenha extends VerticalLayout {
+public class EsquecerSenhaController extends VerticalLayout {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1387369252734935061L;
+	
 	public static final String ROUTE = "esqueci-senha";
 
-	public EsquecerSenha() {
+	public EsquecerSenhaController() {
 
-		H1 recuperacao = new H1("Recuperação de Senha");
-		recuperacao.getStyle()
-        .set("color", "#A34CD8");
-		add(recuperacao);
-		
 		setSizeFull();
 		setJustifyContentMode(JustifyContentMode.CENTER);
 		setAlignItems(Alignment.CENTER);
 
+		H1 recuperacao = new H1("Recuperação de Senha");
+		recuperacao.getStyle().set("color", "#A34CD8");
+		add(recuperacao);
+
 		TextField esqueceu = new TextField("Insira o email para a redefinição de senha");
-		esqueceu.getStyle()
-        .set("color", "#A34CD8");
+		esqueceu.getStyle().set("color", "#A34CD8");
 		esqueceu.setPlaceholder("E-mail");
 		esqueceu.setWidth(350, Unit.PIXELS);
-		
 		add(esqueceu);
 		
 		Button enviar = new Button("Enviar");
 		enviar.setWidth(100, Unit.PIXELS);
 		enviar.addClickListener(click -> enviar.getUI().ifPresent(ui -> ui.navigate(LoginController.ROUTE)));
+		add(enviar);
 		
 		Text enviaremos = new Text("Enviaremos um número de PIN para o seu e-mail\n - ");
 		Text insira = new Text("Insira o número de PIN nos campos adequados na página");
 		add(enviaremos, insira);
-
-		add(enviar);
-		
-
 	}
 
 }
