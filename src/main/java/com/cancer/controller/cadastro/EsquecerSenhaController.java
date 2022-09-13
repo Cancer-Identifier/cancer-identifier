@@ -43,9 +43,8 @@ public class EsquecerSenhaController extends VerticalLayout {
 		enviar.addClickListener(click -> enviar.getUI().ifPresent(ui -> ui.navigate(LoginController.ROUTE)));
 		add(enviar);
 		
-		Text enviaremos = new Text("Enviaremos um número de PIN para o seu e-mail\n - ");
-		Text insira = new Text("Insira o número de PIN nos campos adequados na página");
-		add(enviaremos, insira);
+		Text enviaremos = new Text("Enviaremos e-mail para prosseguir com alteração de senha!");
+		add(enviaremos);
 	}
 
 }
