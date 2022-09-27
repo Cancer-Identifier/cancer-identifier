@@ -48,11 +48,6 @@ public class TelaInicialController extends VerticalLayout {
 		btnPerfilUsuario.setWidth(250, Unit.PIXELS);
 		btnPerfilUsuario.addClickListener(click -> btnCadastrar.getUI().ifPresent(ui -> ui.navigate(CadastroController.ROUTE)));
 		add(btnPerfilUsuario);
-		
-		Button btnConvenios = new Button("Clinicas Conveniadas");
-		btnConvenios.setWidth(250, Unit.PIXELS);
-		btnConvenios.addClickListener(click -> btnCadastrar.getUI().ifPresent(ui -> ui.navigate(CadastroController.ROUTE)));
-		add(btnConvenios);
 
 		Button btnSair = new Button("Sair");
 		btnSair.setWidth(150, Unit.PIXELS);
