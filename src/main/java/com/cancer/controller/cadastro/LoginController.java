@@ -1,9 +1,11 @@
 package com.cancer.controller.cadastro;
 
 import com.cancer.controller.home.TelaInicialController;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.login.LoginForm;
 import com.vaadin.flow.component.login.LoginI18n;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -42,13 +44,21 @@ public class LoginController extends VerticalLayout {
         loginForm.addForgotPasswordListener(e -> loginForm.getUI().ifPresent(ui -> ui.navigate(EsquecerSenhaController.ROUTE)));
         loginForm.setI18n(i18n);
         
-        logar(loginForm);
+        loginForm.addLoginListener(event -> {
+        	if("user".equals(event.getUsername())) {
+        		if("123".equals(event.getPassword())) {
+        			UI.getCurrent().navigate(TelaInicialController.ROUTE);
+        		}else {
+            		Notification.show("Usuário ou senha inválidos!");
+            		loginForm.setEnabled(true);
+            	}
+        	} else {
+        		Notification.show("Usuário ou senha inválidos!");
+        		loginForm.setEnabled(true);
+        	}
+        	
+        });
         
         add(loginForm);
     }
-
-	private void logar(LoginForm loginForm) {
-		loginForm.addLoginListener(click -> loginForm.getUI().ifPresent(ui -> ui.navigate(TelaInicialController.ROUTE)));
-	}
-	
 }

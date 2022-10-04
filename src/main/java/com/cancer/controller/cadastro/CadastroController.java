@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.cancer.controller.home.TelaInicialController;
 import com.cancer.repository.cadastro.TipoUsuarioRepository;
+import com.cancer.validacoes.ValidacoesUsuario;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
@@ -15,6 +16,7 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.login.LoginForm;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.NumberField;
@@ -34,11 +36,14 @@ public class CadastroController extends VerticalLayout {
 	private static final long serialVersionUID = -4824780765428606387L;
 
 	public static final String ROUTE = "app-cadastro";
+	
 
 	private List<String> items = new ArrayList<>(
 			Arrays.asList(TipoUsuarioRepository.MEDICO.getDescricao(), TipoUsuarioRepository.SECRETARIA.getDescricao()));
 	private Icon checkIcon;
 	private Span passwordStrengthText;
+	private TextField primeiroNome;
+	TextField crmText;
 
 	public CadastroController() {
 
@@ -51,11 +56,17 @@ public class CadastroController extends VerticalLayout {
 		ComboBox<String> comboBox = new ComboBox<>("Usuário");
 		comboBox.setAllowCustomValue(true);
 		comboBox.setItems(items);
-		add(comboBox);
+		
+		crmText = new TextField("Crm");
+		crmText.setEnabled(false);
+		
+		comboBox.addValueChangeListener(e -> crmValidador(e.getValue()));
+		
+		add(new HorizontalLayout(comboBox, crmText));
 
-		TextField primeiroNome = new TextField("Nome");
+		primeiroNome = new TextField("Nome");
 		primeiroNome.setPlaceholder("João");
-		primeiroNome.setWidth(250, Unit.PIXELS);
+		primeiroNome.setWidth(250, Unit.PIXELS );
 
 		TextField sobrenome = new TextField("Sobrenome");
 		sobrenome.setPlaceholder("Antônio");
@@ -102,16 +113,32 @@ public class CadastroController extends VerticalLayout {
 		confirmPassword.setErrorMessage("Não é uma senha válida");
 		confirmPassword.setWidth(250, Unit.PIXELS);
 		add(new HorizontalLayout(passwordField, confirmPassword));
-
+		
+		ValidacoesUsuario validar = new ValidacoesUsuario();
+		
 		Button btnCadastrar = new Button("Criar conta");
 		btnCadastrar.setWidth(250, Unit.PIXELS);
 		btnCadastrar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+		btnCadastrar.addClickListener(click -> validar.validarCampos(crmText.getValue(), comboBox.getValue(), primeiroNome.getValue(), sobrenome.getValue(), telefone.getValue(), dataNascimento.getValue(), 
+				email.getValue(), cpf.getValue(), passwordField.getValue(), confirmPassword.getValue()));
 
 		Button btnCancelar = new Button("Cancelar");
 		btnCancelar.setWidth(250, Unit.PIXELS);
 		btnCancelar.addClickListener(click -> btnCancelar.getUI().ifPresent(ui -> ui.navigate(TelaInicialController.ROUTE)));
 		add(new HorizontalLayout(btnCadastrar, btnCancelar));
 
+	}
+	
+	private void limpaCampos() {
+		primeiroNome.setValue("");
+	}
+	
+	private void crmValidador(String combo) {
+		if(combo.equals("Médico(a)")) {
+			crmText.setEnabled(true);
+		}else {
+			crmText.setEnabled(false);
+		}
 	}
 
 	private void updateHelper(String password) {
@@ -128,6 +155,10 @@ public class CadastroController extends VerticalLayout {
 			passwordStrengthText.getStyle().set("color", "var(--lumo-error-color)");
 			checkIcon.setVisible(false);
 		}
+	}
+	
+	public void cadastrar(Button cadastrar) {
+		cadastrar.addClickListener(click -> cadastrar.getUI().ifPresent(ui -> ui.navigate(TelaInicialController.ROUTE)));
 	}
 
 }
