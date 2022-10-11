@@ -5,45 +5,16 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dialog.Dialog;
 
-public class ValidacoesUsuario {
+public class ValidacoesPaciente {
 	
-	public void validarCampos(String crm, String comboBox, String nome, String sobrenome, Double telefone, String dataNascimento, String email,
-			Double cpf, String passwordField, String confirmPassword) {
+	public void validarCampos(String nome, String sobrenome, Double telefone, String dataNascimento, String email, Double cpf) {
 		
 		int error = 0;
-		
-		if(comboBox == "" || comboBox.isEmpty() || comboBox == null) {
-			Dialog dialog = new Dialog();
-
-	        dialog.add("Selecione um usuário.     ");
-
-	        Button okButton = new Button("OK", (e) -> dialog.close());
-	        okButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_ERROR);
-	        dialog.add(okButton);
-
-	        dialog.open();
-	        error ++;
-		}
-		
-		if(comboBox.equals("Médico(a)")) {
-			if(crm == "" || comboBox.isEmpty()) {
-				Dialog dialog = new Dialog();
-
-		        dialog.add("Digite um CRM válido.     ");
-
-		        Button okButton = new Button("OK", (e) -> dialog.close());
-		        okButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_ERROR);
-		        dialog.add(okButton);
-
-		        dialog.open();
-		        error ++;
-			}
-		}
 		
 		if(nome == "" || nome == null || nome.isEmpty()) {
 			Dialog dialog = new Dialog();
 
-	        dialog.add("Nome de usuário não pode estar vazio.     ");
+	        dialog.add("Nome de paciente não pode estar vazio.     ");
 
 	        Button okButton = new Button("OK", (e) -> dialog.close());
 	        okButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_ERROR);
@@ -107,37 +78,11 @@ public class ValidacoesUsuario {
 	        error ++;
 		}
 		
-		if(passwordField == "" || passwordField.isEmpty() || passwordField.length() < 8) {
-			Dialog dialog = new Dialog();
-
-	        dialog.add("Senha deve conter 8 dígitos, incluindo letras e números.     ");
-
-	        Button okButton = new Button("OK", (e) -> dialog.close());
-	        okButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_ERROR);
-	        dialog.add(okButton);
-
-	        dialog.open();
-	        error ++;
-		}
-		
-		if(!confirmPassword.equals(passwordField)) {
-			Dialog dialog = new Dialog();
-
-	        dialog.add("Senhas não podem ser diferentes.     ");
-
-	        Button okButton = new Button("OK", (e) -> dialog.close());
-	        okButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_ERROR);
-	        dialog.add(okButton);
-
-	        dialog.open();
-	        error ++;
-		}
-		
 		if(error == 0) {
 			CadastroController cadastro = new CadastroController();
 			Dialog dialog = new Dialog();
 
-	        dialog.add("Usuário cadastrado com sucesso!     ");
+	        dialog.add("Paciente cadastrado com sucesso!     ");
 
 	        Button okButton = new Button("OK", (e) -> dialog.close());
 	        okButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY);

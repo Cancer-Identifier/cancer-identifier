@@ -1,6 +1,7 @@
 package com.cancer.controller.paciente;
 
 import com.cancer.controller.home.TelaInicialController;
+import com.cancer.validacoes.ValidacoesPaciente;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -61,6 +62,10 @@ public class CadastrarPacienteController extends VerticalLayout {
 		btnCadastrar.getStyle().set("backgroud", "#A34CD8");
 		btnCadastrar.setWidth(300, Unit.PIXELS);
 		btnCadastrar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+		
+		ValidacoesPaciente paciente = new ValidacoesPaciente();
+		btnCadastrar.addClickListener(click -> paciente.validarCampos(primeiroNome.getValue(), sobrenome.getValue(), telefone.getValue(), dataNascimento.getValue(), 
+				email.getValue(), cpf.getValue()));
 
 		Button btnCancelar = new Button("Cancelar");
 		btnCancelar.getStyle().set("color", "#A34CD8");

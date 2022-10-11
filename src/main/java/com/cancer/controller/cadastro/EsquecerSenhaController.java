@@ -1,11 +1,15 @@
 package com.cancer.controller.cadastro;
 
 
+import com.cancer.controller.home.TelaInicialController;
+import com.cancer.validacoes.ValidacoesEsqueceuSenha;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H4;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
@@ -39,9 +43,18 @@ public class EsquecerSenhaController extends VerticalLayout {
 		add(esqueceu);
 		
 		Button enviar = new Button("Enviar");
-		enviar.setWidth(100, Unit.PIXELS);
-		enviar.addClickListener(click -> enviar.getUI().ifPresent(ui -> ui.navigate(LoginController.ROUTE)));
-		add(enviar);
+		enviar.setWidth(120, Unit.PIXELS);
+		
+		Button btnCancelar = new Button("Cancelar");
+		btnCancelar.setWidth(100, Unit.PIXELS);
+		btnCancelar.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_ERROR);
+		btnCancelar.addClickListener(click -> btnCancelar.getUI().ifPresent(ui -> ui.navigate(TelaInicialController.ROUTE)));
+		
+		ValidacoesEsqueceuSenha valida = new ValidacoesEsqueceuSenha();
+		
+		enviar.addClickListener(click -> valida.validarCampos(esqueceu.getValue()));
+		
+		add(new HorizontalLayout(enviar, btnCancelar));
 		
 		Text enviaremos = new Text("Enviaremos e-mail para prosseguir com alteração de senha!");
 		add(enviaremos);
