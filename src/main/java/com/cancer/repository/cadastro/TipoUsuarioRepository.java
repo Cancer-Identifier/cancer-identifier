@@ -1,8 +1,5 @@
 package com.cancer.repository.cadastro;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public enum TipoUsuarioRepository {
 
 	SECRETARIA(1, "Secretário(a)"),
