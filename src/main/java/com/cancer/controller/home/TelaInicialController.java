@@ -1,8 +1,8 @@
 package com.cancer.controller.home;
 
-import com.cancer.controller.cadastro.CadastroController;
 import com.cancer.controller.cadastro.LoginController;
 import com.cancer.controller.paciente.CadastrarPacienteController;
+import com.cancer.view.cadastro.CadastroView;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H1;
@@ -31,7 +31,7 @@ public class TelaInicialController extends VerticalLayout {
 
 		Button btnCadastrar = new Button("Cadastrar usuário");
 		btnCadastrar.setWidth(250, Unit.PIXELS);
-		btnCadastrar.addClickListener(click -> btnCadastrar.getUI().ifPresent(ui -> ui.navigate(CadastroController.ROUTE)));
+		btnCadastrar.addClickListener(click -> btnCadastrar.getUI().ifPresent(ui -> ui.navigate(CadastroView.ROUTE)));
 		add(btnCadastrar);
 		
 		Button btnCadastrarPaciente = new Button("Cadastrar paciente");
@@ -41,12 +41,12 @@ public class TelaInicialController extends VerticalLayout {
 		
 		Button btnBuscarPaciente = new Button("Buscar Paciente");
 		btnBuscarPaciente.setWidth(250, Unit.PIXELS);
-		btnBuscarPaciente.addClickListener(click -> btnCadastrar.getUI().ifPresent(ui -> ui.navigate(CadastroController.ROUTE)));
+		btnBuscarPaciente.addClickListener(click -> btnCadastrar.getUI().ifPresent(ui -> ui.navigate(CadastroView.ROUTE)));
 		add(btnBuscarPaciente);
 		
 		Button btnPerfilUsuario = new Button("Perfil do Usuário");
 		btnPerfilUsuario.setWidth(250, Unit.PIXELS);
-		btnPerfilUsuario.addClickListener(click -> btnCadastrar.getUI().ifPresent(ui -> ui.navigate(CadastroController.ROUTE)));
+		btnPerfilUsuario.addClickListener(click -> btnCadastrar.getUI().ifPresent(ui -> ui.navigate(CadastroView.ROUTE)));
 		add(btnPerfilUsuario);
 
 		Button btnSair = new Button("Sair");
