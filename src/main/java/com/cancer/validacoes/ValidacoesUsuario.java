@@ -12,8 +12,8 @@ public class ValidacoesUsuario {
 		
 		int error = 0;
 		
-		if(comboBox.isEmpty() || comboBox == null) {
-			String msgErro = "Selecione um usuário.<br>";
+		if(comboBox == null) {
+			String msgErro = "Selecione um usuário.      ";
 			dialogBox(msgErro);
 			error++;
 		}
@@ -84,11 +84,11 @@ public class ValidacoesUsuario {
 
 	private void dialogBox(String msgErro) {
 		Dialog dialog = new Dialog();
-
+		dialog.add(msgErro);
+		
 		Button okButton = new Button("OK", e -> dialog.close());
 		okButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_ERROR);
 		dialog.add(okButton);
-		dialog.add(msgErro);
 		dialog.open();
 	}
 }
