@@ -1,6 +1,6 @@
 package com.cancer.validacoes;
 
-import com.cancer.controller.cadastro.CadastroController;
+import com.cancer.view.cadastro.CadastroView;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -67,7 +67,7 @@ public class ValidacoesUsuario {
 		}
 		
 		if(error == 0) {
-			CadastroController cadastro = new CadastroController();
+			CadastroView cadastro = new CadastroView();
 			Dialog dialog = new Dialog();
 
 	        dialog.add("Usuário cadastrado com sucesso!     ");

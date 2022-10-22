@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.cancer.controller.cadastro.CadastroController;
 import com.cancer.controller.home.TelaInicialController;
-import com.cancer.repository.cadastro.TipoUsuarioRepository;
+import com.cancer.model.cadastro.TipoUsuarioRepository;
 import com.cancer.validacoes.ValidacoesUsuario;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.Unit;
@@ -16,6 +16,8 @@ import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Span;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.NumberField;
@@ -98,7 +100,7 @@ public class CadastroView  extends VerticalLayout {
 		passwordStrength.add(new Text("Força da senha: "), passwordStrengthText);
 		passwordField.setHelperComponent(passwordStrength);
 		passwordField.setValueChangeMode(ValueChangeMode.EAGER);
-		passwordField.addValueChangeListener(e -> cadastroController.updateHelper(e.getValue(), passwordStrengthText, passwordField));
+		passwordField.addValueChangeListener(e -> updateHelper(e.getValue(), passwordStrengthText, passwordField));
 
 		PasswordField confirmPassword = new PasswordField("Confirmar senha");
 		confirmPassword.setHelperText("Uma senha deve ter pelo menos 8 caracteres. Tem que ter pelo menos uma letra e um dígito.");
@@ -121,4 +123,27 @@ public class CadastroView  extends VerticalLayout {
 		add(new HorizontalLayout(btnCadastrar, btnCancelar));
 	}
 	
+	public void updateHelper(String password, Span passwordStrengthText, PasswordField passwordField) {
+		Icon checkIcon = VaadinIcon.CHECK.create();
+		checkIcon.setVisible(false);
+		checkIcon.getStyle().set("color", "var(--lumo-success-color)");
+		passwordField.setSuffixComponent(checkIcon);
+		if (password.length() > 9) {
+			passwordStrengthText.setText("Forte");
+			passwordStrengthText.getStyle().set("color", "var(--lumo-success-color)");
+			checkIcon.setVisible(true);
+		} else if (password.length() > 5) {
+			passwordStrengthText.setText("Moderada");
+			passwordStrengthText.getStyle().set("color", "#e7c200");
+			checkIcon.setVisible(false);
+		} else {
+			passwordStrengthText.setText("Fraca");
+			passwordStrengthText.getStyle().set("color", "var(--lumo-error-color)");
+			checkIcon.setVisible(false);
+		}
+	}
+	
+	public void cadastrar(Button cadastrar) {
+		cadastrar.addClickListener(click -> cadastrar.getUI().ifPresent(ui -> ui.navigate(TelaInicialController.ROUTE)));
+	}
 }
