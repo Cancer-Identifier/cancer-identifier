@@ -1,7 +1,0 @@
-/*
-
-O pacote controller é pra fazer a conexão entre as classes do pacote view, onde está o front-end, com as classes do pacote model, que se trata do back-end. 
-
-*******************************************************************MANTER A ORGANIZAÇÃO*******************************************************************
-
-*/

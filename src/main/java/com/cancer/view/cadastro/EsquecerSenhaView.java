@@ -1,8 +1,8 @@
 package com.cancer.view.cadastro;
 
 
-import com.cancer.controller.home.TelaInicialController;
 import com.cancer.validacoes.ValidacoesEsqueceuSenha;
+import com.cancer.view.home.TelaInicialView;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
@@ -47,7 +47,7 @@ public class EsquecerSenhaView extends VerticalLayout {
 		Button btnCancelar = new Button("Cancelar");
 		btnCancelar.setWidth(100, Unit.PIXELS);
 		btnCancelar.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_ERROR);
-		btnCancelar.addClickListener(click -> btnCancelar.getUI().ifPresent(ui -> ui.navigate(TelaInicialController.ROUTE)));
+		btnCancelar.addClickListener(click -> btnCancelar.getUI().ifPresent(ui -> ui.navigate(TelaInicialView.ROUTE)));
 		
 		ValidacoesEsqueceuSenha valida = new ValidacoesEsqueceuSenha();
 		

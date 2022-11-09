@@ -1,7 +1,7 @@
 package com.cancer.view.login;
 
-import com.cancer.controller.home.TelaInicialController;
 import com.cancer.view.cadastro.EsquecerSenhaView;
+import com.cancer.view.home.TelaInicialView;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.login.LoginForm;
@@ -46,7 +46,7 @@ public class LoginView extends VerticalLayout {
         loginForm.addLoginListener(event -> {
         	if("user".equals(event.getUsername())) {
         		if("123".equals(event.getPassword())) {
-        			UI.getCurrent().navigate(TelaInicialController.ROUTE);
+        			UI.getCurrent().navigate(TelaInicialView.ROUTE);
         		} else {
             		Notification.show("Usuário ou senha inválidos!");
             		loginForm.setEnabled(true);

@@ -5,9 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.cancer.controller.cadastro.CadastroController;
-import com.cancer.controller.home.TelaInicialController;
 import com.cancer.model.cadastro.TipoUsuarioRepository;
 import com.cancer.validacoes.ValidacoesUsuario;
+import com.cancer.view.home.TelaInicialView;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
@@ -119,7 +119,7 @@ public class CadastroView  extends VerticalLayout {
 
 		Button btnCancelar = new Button("Cancelar");
 		btnCancelar.setWidth(250, Unit.PIXELS);
-		btnCancelar.addClickListener(click -> btnCancelar.getUI().ifPresent(ui -> ui.navigate(TelaInicialController.ROUTE)));
+		btnCancelar.addClickListener(click -> btnCancelar.getUI().ifPresent(ui -> ui.navigate(TelaInicialView.ROUTE)));
 		add(new HorizontalLayout(btnCadastrar, btnCancelar));
 	}
 	
@@ -144,6 +144,6 @@ public class CadastroView  extends VerticalLayout {
 	}
 	
 	public void cadastrar(Button cadastrar) {
-		cadastrar.addClickListener(click -> cadastrar.getUI().ifPresent(ui -> ui.navigate(TelaInicialController.ROUTE)));
+		cadastrar.addClickListener(click -> cadastrar.getUI().ifPresent(ui -> ui.navigate(TelaInicialView.ROUTE)));
 	}
 }

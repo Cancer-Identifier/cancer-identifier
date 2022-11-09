@@ -1,4 +1,4 @@
-package com.cancer.controller.cadastro;
+package com.cancer.controller.login;
 
 import java.io.Serializable;
 
