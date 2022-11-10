@@ -23,7 +23,9 @@ public class TelaInicialView extends VerticalLayout {
 
 	public TelaInicialView() {
 
-		add(new H1("Cancer-Identifier"));
+		H1 titulo = new H1("CANCER IDENTIFIER");
+		titulo.getStyle().set("color", "#A34CD8");
+		add(titulo);
 		
 		setSizeFull();
 		setJustifyContentMode(JustifyContentMode.CENTER);
@@ -39,12 +41,12 @@ public class TelaInicialView extends VerticalLayout {
 		btnCadastrarPaciente.addClickListener(click -> btnCadastrar.getUI().ifPresent(ui -> ui.navigate(CadastrarPacienteView.ROUTE)));
 		add(btnCadastrarPaciente);
 		
-		Button btnBuscarPaciente = new Button("Buscar Paciente");
+		Button btnBuscarPaciente = new Button("Busca paciente");
 		btnBuscarPaciente.setWidth(250, Unit.PIXELS);
 		btnBuscarPaciente.addClickListener(click -> btnCadastrar.getUI().ifPresent(ui -> ui.navigate(CadastroView.ROUTE)));
 		add(btnBuscarPaciente);
 		
-		Button btnPerfilUsuario = new Button("Perfil do Usuário");
+		Button btnPerfilUsuario = new Button("Perfil do usuário");
 		btnPerfilUsuario.setWidth(250, Unit.PIXELS);
 		btnPerfilUsuario.addClickListener(click -> btnCadastrar.getUI().ifPresent(ui -> ui.navigate(CadastroView.ROUTE)));
 		add(btnPerfilUsuario);
