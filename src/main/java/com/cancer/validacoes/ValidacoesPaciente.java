@@ -7,7 +7,7 @@ import com.vaadin.flow.component.dialog.Dialog;
 
 public class ValidacoesPaciente {
 	
-	public void validarCampos(String nome, String sobrenome, Double telefone, String dataNascimento, String email, Double cpf) {
+	public void validarCampos(String nome, Double telefone, String dataNascimento, String email, Double cpf) {
 		
 		int error = 0;
 		
@@ -15,19 +15,6 @@ public class ValidacoesPaciente {
 			Dialog dialog = new Dialog();
 
 	        dialog.add("Nome de paciente não pode estar vazio.     ");
-
-	        Button okButton = new Button("OK", (e) -> dialog.close());
-	        okButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_ERROR);
-	        dialog.add(okButton);
-
-	        dialog.open();
-	        error ++;
-		}
-		
-		if(sobrenome == "" || sobrenome == null || sobrenome.isEmpty()) {
-			Dialog dialog = new Dialog();
-
-	        dialog.add("Sobrenome não pode estar vazio.     ");
 
 	        Button okButton = new Button("OK", (e) -> dialog.close());
 	        okButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_ERROR);

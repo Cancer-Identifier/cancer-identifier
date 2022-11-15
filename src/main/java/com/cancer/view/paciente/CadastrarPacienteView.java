@@ -33,38 +33,34 @@ public class CadastrarPacienteView extends VerticalLayout {
 		
 		TextField primeiroNome = new TextField("Nome");
 		primeiroNome.setPlaceholder("João");
-		primeiroNome.setWidth(300, Unit.PIXELS);
-
-		TextField sobrenome = new TextField("Sobrenome");
-		sobrenome.setPlaceholder("Antônio");
-		sobrenome.setWidth(300, Unit.PIXELS);
-		add(new HorizontalLayout(primeiroNome, sobrenome));
+		primeiroNome.setWidth(500, Unit.PIXELS);
+		add(primeiroNome);
+		
+		TextField email = new TextField("E-mail");
+		email.setWidth(500, Unit.PIXELS);
+		email.setPlaceholder("joao.antonio@cancer.com");
+		add(email);
 
 		NumberField telefone = new NumberField("Telefone");
-		telefone.setWidth(300, Unit.PIXELS);
+		telefone.setWidth(156, Unit.PIXELS);
 		telefone.setPlaceholder("(xx)xxxxx-xxxx");
 
 		TextField dataNascimento = new TextField("Data de Nascimento");
-		dataNascimento.setWidth(300, Unit.PIXELS);
+		dataNascimento.setWidth(156, Unit.PIXELS);
 		dataNascimento.setPlaceholder("xx/xx/xxxx");
-		add(new HorizontalLayout(dataNascimento, telefone));
-
-		TextField email = new TextField("E-mail");
-		email.setWidth(400, Unit.PIXELS);
-		email.setPlaceholder("joao.antonio@cancer.com");
 
 		NumberField cpf = new NumberField("CPF");
-		cpf.setWidth(200, Unit.PIXELS);
+		cpf.setWidth(156, Unit.PIXELS);
 		cpf.setPlaceholder("xxx.xxx.xxx-xx");
-		add(new HorizontalLayout(email, cpf));
-
+		add(new HorizontalLayout(telefone, cpf, dataNascimento));
+		
 		Button btnCadastrar = new Button("Cadastrar");
 		btnCadastrar.getStyle().set("backgroud", "#A34CD8");
 		btnCadastrar.setWidth(300, Unit.PIXELS);
 		btnCadastrar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 		
 		ValidacoesPaciente paciente = new ValidacoesPaciente();
-		btnCadastrar.addClickListener(click -> paciente.validarCampos(primeiroNome.getValue(), sobrenome.getValue(), telefone.getValue(), dataNascimento.getValue(), 
+		btnCadastrar.addClickListener(click -> paciente.validarCampos(primeiroNome.getValue(), telefone.getValue(), dataNascimento.getValue(), 
 				email.getValue(), cpf.getValue()));
 
 		Button btnCancelar = new Button("Cancelar");

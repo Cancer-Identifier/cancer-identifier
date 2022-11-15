@@ -39,7 +39,7 @@ public class CadastroView  extends VerticalLayout {
 	public static final String ROUTE = "app-cadastro-usuario";
 
 	private List<String> items = new ArrayList<>(Arrays.asList(TipoUsuarioRepository.MEDICO.getDescricao(), TipoUsuarioRepository.SECRETARIA.getDescricao()));
-	private TextField primeiroNome;
+	private TextField txtNome;
 	TextField crmText;
 	CadastroController cadastroController = new CadastroController();
 
@@ -64,35 +64,31 @@ public class CadastroView  extends VerticalLayout {
 		crmText.setEnabled(false);
 		add(new HorizontalLayout(comboBox, crmText));
 
-		primeiroNome = new TextField("Nome");
-		primeiroNome.setPlaceholder("João");
-		primeiroNome.setWidth(250, Unit.PIXELS);
-
-		TextField sobrenome = new TextField("Sobrenome");
-		sobrenome.setPlaceholder("Antônio");
-		sobrenome.setWidth(250, Unit.PIXELS);
-		add(new HorizontalLayout(primeiroNome, sobrenome));
+		txtNome = new TextField("Nome");
+		txtNome.setPlaceholder("João");
+		txtNome.setWidth(500, Unit.PIXELS);
+		add(txtNome);
+		
+		TextField txtEmail = new TextField("E-mail");
+		txtEmail.setWidth(500, Unit.PIXELS);
+		txtEmail.setPlaceholder("joao.antonio@cancer.com");
+		add(txtEmail);
 
 		NumberField telefone = new NumberField("Telefone");
-		telefone.setWidth(250, Unit.PIXELS);
+		telefone.setWidth(156, Unit.PIXELS);
 		telefone.setPlaceholder("(xx)xxxxx-xxxx");
 
 		TextField dataNascimento = new TextField("Data de Nascimento");
-		dataNascimento.setWidth(250, Unit.PIXELS);
+		dataNascimento.setWidth(156, Unit.PIXELS);
 		dataNascimento.setPlaceholder("xx/xx/xxxx");
-		add(new HorizontalLayout(dataNascimento, telefone));
-
-		TextField email = new TextField("E-mail");
-		email.setWidth(300, Unit.PIXELS);
-		email.setPlaceholder("joao.antonio@cancer.com");
 
 		NumberField cpf = new NumberField("CPF");
-		cpf.setWidth(200, Unit.PIXELS);
+		cpf.setWidth(156, Unit.PIXELS);
 		cpf.setPlaceholder("xxx.xxx.xxx-xx");
-		add(new HorizontalLayout(email, cpf));
+		add(new HorizontalLayout(telefone, cpf, dataNascimento));
 
 		PasswordField passwordField = new PasswordField("Senha");
-		passwordField.setWidth(250, Unit.PIXELS);
+		passwordField.setWidth(243, Unit.PIXELS);
 		passwordField.setPattern("^(?=.*[0-9])(?=.*[a-zA-Z]).{8}.*$");
 
 		Div passwordStrength = new Div();
@@ -105,7 +101,7 @@ public class CadastroView  extends VerticalLayout {
 		PasswordField confirmPassword = new PasswordField("Confirmar senha");
 		confirmPassword.setHelperText("Uma senha deve ter pelo menos 8 caracteres. Tem que ter pelo menos uma letra e um dígito.");
 		confirmPassword.setErrorMessage("Não é uma senha válida");
-		confirmPassword.setWidth(250, Unit.PIXELS);
+		confirmPassword.setWidth(243, Unit.PIXELS);
 		add(new HorizontalLayout(passwordField, confirmPassword));
 
 		ValidacoesUsuario validar = new ValidacoesUsuario();
@@ -114,8 +110,8 @@ public class CadastroView  extends VerticalLayout {
 		btnCadastrar.setWidth(250, Unit.PIXELS);
 		btnCadastrar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
 		btnCadastrar.addClickListener(click -> validar.validarCampos(crmText.getValue(), comboBox.getValue(),
-				primeiroNome.getValue(), sobrenome.getValue(), telefone.getValue(), dataNascimento.getValue(),
-				email.getValue(), cpf.getValue(), passwordField.getValue(), confirmPassword.getValue()));
+				txtNome.getValue(), telefone.getValue(), dataNascimento.getValue(),
+				txtEmail.getValue(), cpf.getValue(), passwordField.getValue(), confirmPassword.getValue()));
 
 		Button btnCancelar = new Button("Cancelar");
 		btnCancelar.setWidth(250, Unit.PIXELS);

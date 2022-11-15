@@ -7,7 +7,7 @@ import com.vaadin.flow.component.dialog.Dialog;
 
 public class ValidacoesUsuario {
 	
-	public void validarCampos(String crm, String comboBox, String nome, String sobrenome, Double telefone, String dataNascimento, String email,
+	public void validarCampos(String crm, String comboBox, String nome, Double telefone, String dataNascimento, String email,
 			Double cpf, String passwordField, String confirmPassword) {
 		
 		int error = 0;
@@ -26,12 +26,6 @@ public class ValidacoesUsuario {
 		
 		if(nome == null || nome.isEmpty()) {
 			String msgErro = "Nome de usuário não pode estar vazio.     ";
-			dialogBox(msgErro);
-			error++;
-		}
-		
-		if(sobrenome == null || sobrenome.isEmpty()) {
-	    	String msgErro = "Sobrenome não pode estar vazio.     ";
 			dialogBox(msgErro);
 			error++;
 		}
