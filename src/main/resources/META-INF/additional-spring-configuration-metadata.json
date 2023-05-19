@@ -1,0 +1,172 @@
+{"properties": [
+  {
+    "name": "vaadin.compatibilityMode",
+    "type": "java.lang.String",
+    "description": "A description for 'vaadin.compatibilityMode'"
+  },
+  {
+    "name": "spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver'"
+  },
+  {
+    "name": "vaadin.compatibilityMode",
+    "type": "java.lang.String",
+    "description": "A description for 'vaadin.compatibilityMode'"
+  },
+  {
+    "name": "vaadin.compatibilityMode",
+    "type": "java.lang.String",
+    "description": "A description for 'vaadin.compatibilityMode'"
+  },
+  {
+    "name": "vaadin.compatibilityMode",
+    "type": "java.lang.String",
+    "description": "A description for 'vaadin.compatibilityMode'"
+  },
+  {
+    "name": "vaadin.compatibilityMode",
+    "type": "java.lang.String",
+    "description": "A description for 'vaadin.compatibilityMode'"
+  },
+  {
+    "name": "spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver'"
+  },
+  {
+    "name": "spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver'"
+  },
+  {
+    "name": "spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver'"
+  },
+  {
+    "name": "spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver'"
+  },
+  {
+    "name": "spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver'"
+  },
+  {
+    "name": "spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver'"
+  },
+  {
+    "name": "spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver'"
+  },
+  {
+    "name": "spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver'"
+  },
+  {
+    "name": "spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver'"
+  },
+  {
+    "name": "spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver'"
+  },
+  {
+    "name": "spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver'"
+  },
+  {
+    "name": "spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver'"
+  },
+  {
+    "name": "spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver'"
+  },
+  {
+    "name": "spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver'"
+  },
+  {
+    "name": "spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver'"
+  },
+  {
+    "name": "vaadin.compatibilityMode",
+    "type": "java.lang.String",
+    "description": "A description for 'vaadin.compatibilityMode'"
+  },
+  {
+    "name": "spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver'"
+  },
+  {
+    "name": "spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver'"
+  },
+  {
+    "name": "spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver'"
+  },
+  {
+    "name": "spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver'"
+  },
+  {
+    "name": "spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver'"
+  },
+  {
+    "name": "spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver'"
+  },
+  {
+    "name": "spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver'"
+  },
+  {
+    "name": "spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver'"
+  },
+  {
+    "name": "spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver'"
+  },
+  {
+    "name": "spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver'"
+  },
+  {
+    "name": "spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-oracle.jdbc.driver.OracleDriver'"
+  },
+  {
+    "name": "spring.datasource.driver.class",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver.class'"
+  }
+]}

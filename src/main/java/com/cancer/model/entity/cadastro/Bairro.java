@@ -1,27 +1,34 @@
 package com.cancer.model.entity.cadastro;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "PESSOA_NOVA")
 public class Bairro {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id
+    @Column(name = "ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+	
+	@Column(name = "NOME")
     private String descricao;
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public String getDescricao() {
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getDescricao() {
         return descricao;
     }
 
