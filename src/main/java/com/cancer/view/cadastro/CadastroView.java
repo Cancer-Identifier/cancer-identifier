@@ -1,11 +1,8 @@
 package com.cancer.view.cadastro;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import com.cancer.controller.cadastro.CadastroController;
-import com.cancer.model.cadastro.TipoUsuarioRepository;
+import com.cancer.model.repository.cadastro.TipoUsuarioRepository;
+import com.cancer.model.service.cadastro.BairroService;
 import com.cancer.validacoes.ValidacoesUsuario;
 import com.cancer.view.home.TelaInicialView;
 import com.vaadin.flow.component.Text;
@@ -26,6 +23,11 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Route(value = CadastroView.ROUTE)
 @PageTitle("Cadastro de Usuário")
@@ -44,6 +46,12 @@ public class CadastroView  extends VerticalLayout {
 	CadastroController cadastroController = new CadastroController();
 
 	public CadastroView() {
+
+		AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
+		appContext.scan("com.cancer");
+		appContext.refresh();
+
+		BairroService bairroService = (BairroService) appContext.getBean("bairroService");
 
 		H1 titulo = new H1("Cadastrar usuário");
 		titulo.getStyle().set("color", "#A34CD8");

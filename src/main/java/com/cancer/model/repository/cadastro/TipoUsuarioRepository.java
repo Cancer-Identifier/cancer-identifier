@@ -1,4 +1,4 @@
-package com.cancer.model.cadastro;
+package com.cancer.model.repository.cadastro;
 
 public enum TipoUsuarioRepository {
 
