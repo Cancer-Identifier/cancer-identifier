@@ -23,4 +23,10 @@
 - Voltar pra sua branch, clicar em branch > rebase current branch.
 - Alterar para master, ir em branch > Merge into... Após realizar esses processos, ir em Current Branch e excluir a branch que criou e marcar a opção "Yes, delete this branch...".
 
+# Conectar Oracle com o Projeto
+
+- Fazer o Download do Oracle Database Express Edition.
+- Na instalação você criará uma senha que será usada no Oracle SQL Developer, criar como "teste".
+- Após instalar o Express Edition, baixar o Oracle SQL Developer.
+- Criar uma nova conexão, com usuario "system" e senha "teste", após isso já poderá ser usado no projeto;
 
