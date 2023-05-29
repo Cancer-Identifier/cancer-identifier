@@ -12,7 +12,10 @@ public class BairroService {
 	@Autowired
     private BairroRepository bairroRepository;
 
-    public void salvarBairro(Bairro bairro) {
+	public void salvarBairro(String nome) {
+        Bairro bairro = new Bairro();
+        bairro.setDescricao(nome);
+
         bairroRepository.save(bairro);
     }
 

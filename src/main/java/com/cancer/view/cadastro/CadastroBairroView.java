@@ -1,6 +1,10 @@
 package com.cancer.view.cadastro;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.cancer.controller.cadastro.CadastroBairroController;
+import com.cancer.model.repository.cadastro.BairroRepository;
+import com.cancer.model.service.cadastro.BairroService;
 import com.cancer.view.home.TelaInicialView;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
@@ -19,6 +23,9 @@ public class CadastroBairroView extends VerticalLayout {
 	private static final long serialVersionUID = -7740129687089752129L;
 	
 	private static final String ROUTE = "app-cadastro-bairro";
+	
+	@Autowired
+    private BairroService bairroService;
 	
 	private TextField nomeBairro;
 
@@ -50,8 +57,7 @@ public class CadastroBairroView extends VerticalLayout {
 	}
 	
 	public void cadastrar() {
-		CadastroBairroController cadastroBairroController = new CadastroBairroController();
-		cadastroBairroController.salvarBairro(nomeBairro.getValue());
+		bairroService.salvarBairro(nomeBairro.getValue());
 		nomeBairro.clear();
 	}
 
