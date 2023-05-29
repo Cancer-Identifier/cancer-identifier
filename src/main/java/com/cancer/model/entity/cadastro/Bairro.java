@@ -8,12 +8,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "PESSOA_NOVA")
+@Table(name = "BAIRRO")
 public class Bairro {
 
 	@Id
     @Column(name = "ID")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 	
 	@Column(name = "NOME")

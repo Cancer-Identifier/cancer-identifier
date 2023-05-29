@@ -1,5 +1,6 @@
 package com.cancer.view.home;
 
+import com.cancer.view.cadastro.CadastroBairroView;
 import com.cancer.view.cadastro.CadastroView;
 import com.cancer.view.login.LoginView;
 import com.cancer.view.paciente.CadastrarPacienteView;
@@ -33,7 +34,7 @@ public class TelaInicialView extends VerticalLayout {
 
 		Button btnCadastrar = new Button("Cadastrar usuário");
 		btnCadastrar.setWidth(250, Unit.PIXELS);
-		btnCadastrar.addClickListener(click -> btnCadastrar.getUI().ifPresent(ui -> ui.navigate(CadastroView.ROUTE)));
+		btnCadastrar.addClickListener(click -> btnCadastrar.getUI().ifPresent(ui -> ui.navigate(CadastroView.getRoute())));
 		add(btnCadastrar);
 		
 		Button btnCadastrarPaciente = new Button("Cadastrar paciente");
@@ -41,14 +42,14 @@ public class TelaInicialView extends VerticalLayout {
 		btnCadastrarPaciente.addClickListener(click -> btnCadastrar.getUI().ifPresent(ui -> ui.navigate(CadastrarPacienteView.ROUTE)));
 		add(btnCadastrarPaciente);
 		
-		Button btnBuscarPaciente = new Button("Busca paciente");
+		Button btnBuscarPaciente = new Button("Cadastrar Bairro");
 		btnBuscarPaciente.setWidth(250, Unit.PIXELS);
-		btnBuscarPaciente.addClickListener(click -> btnCadastrar.getUI().ifPresent(ui -> ui.navigate(CadastroView.ROUTE)));
+		btnBuscarPaciente.addClickListener(click -> btnCadastrar.getUI().ifPresent(ui -> ui.navigate(CadastroBairroView.getRoute())));
 		add(btnBuscarPaciente);
 		
 		Button btnPerfilUsuario = new Button("Perfil do usuário");
 		btnPerfilUsuario.setWidth(250, Unit.PIXELS);
-		btnPerfilUsuario.addClickListener(click -> btnCadastrar.getUI().ifPresent(ui -> ui.navigate(CadastroView.ROUTE)));
+		btnPerfilUsuario.addClickListener(click -> btnCadastrar.getUI().ifPresent(ui -> ui.navigate(CadastroView.getRoute())));
 		add(btnPerfilUsuario);
 
 		Button btnSair = new Button("Sair");
