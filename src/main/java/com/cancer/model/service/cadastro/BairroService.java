@@ -1,5 +1,7 @@
 package com.cancer.model.service.cadastro;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,5 +20,12 @@ public class BairroService {
 
         bairroRepository.save(bairro);
     }
+	public Optional<Bairro> pesquisarPorId(Long id) {
+		return bairroRepository.findById(id);
+	}
+	
+	public void deletarPorId(Long id) {
+		bairroRepository.deleteById(id);
+	}
 
 }

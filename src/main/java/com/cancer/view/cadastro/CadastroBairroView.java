@@ -58,7 +58,7 @@ public class CadastroBairroView extends VerticalLayout {
 		bairroService.salvarBairro(nomeBairro.getValue());
 		nomeBairro.clear();
 	}
-
+	
 	public static String getRoute() {
 		return ROUTE;
 	}

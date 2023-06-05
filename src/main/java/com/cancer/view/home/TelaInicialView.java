@@ -2,6 +2,7 @@ package com.cancer.view.home;
 
 import com.cancer.view.cadastro.CadastroBairroView;
 import com.cancer.view.cadastro.CadastroView;
+import com.cancer.view.cadastro.PesquisaBairroView;
 import com.cancer.view.login.LoginView;
 import com.cancer.view.paciente.CadastrarPacienteView;
 import com.vaadin.flow.component.Unit;
@@ -51,6 +52,11 @@ public class TelaInicialView extends VerticalLayout {
 		btnPerfilUsuario.setWidth(250, Unit.PIXELS);
 		btnPerfilUsuario.addClickListener(click -> btnCadastrar.getUI().ifPresent(ui -> ui.navigate(CadastroView.getRoute())));
 		add(btnPerfilUsuario);
+		
+		Button btnPesquisa = new Button("Pesquisar Bairro");
+		btnPesquisa.setWidth(250, Unit.PIXELS);
+		btnPesquisa.addClickListener(click -> btnCadastrar.getUI().ifPresent(ui -> ui.navigate(PesquisaBairroView.getRoute())));
+		add(btnPesquisa);
 
 		Button btnSair = new Button("Sair");
 		btnSair.setWidth(150, Unit.PIXELS);

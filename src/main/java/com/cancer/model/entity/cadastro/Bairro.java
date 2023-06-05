@@ -16,7 +16,7 @@ public class Bairro {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 	
-	@Column(name = "NOME")
+	@Column(name = "DESCRICAO")
     private String descricao;
 
 
