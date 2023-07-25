@@ -12,5 +12,4 @@ public interface BairroRepository  extends JpaRepository<Bairro, Long> {
 	
 	Optional<Bairro> findById(Long id);
 	
-//	Optional<Bairro> deleteAllByIdInBatch(Long id);
 }

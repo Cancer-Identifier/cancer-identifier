@@ -33,6 +33,7 @@ public class PesquisaBairroView extends VerticalLayout {
 	private NumberField nomeBairro;
 	private TextField nomeResultado;
 	private Button delete;
+	private Button btnEditar;
 
 	public PesquisaBairroView() {
 
@@ -51,7 +52,14 @@ public class PesquisaBairroView extends VerticalLayout {
 		
 		nomeResultado = new TextField("Resultado");
 		nomeResultado.setWidth(500, Unit.PIXELS);
-		add(nomeResultado);
+		
+		btnEditar = new Button("Editar");
+		btnEditar.setWidth(150, Unit.PIXELS);
+		btnEditar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+		btnEditar.addClickListener(e -> editar());
+		btnEditar.setVisible(false);
+		
+		add(nomeResultado, btnEditar);
 
 		Button btnPesquisar = new Button("Pesquisar");
 		btnPesquisar.setWidth(250, Unit.PIXELS);
@@ -61,6 +69,8 @@ public class PesquisaBairroView extends VerticalLayout {
 		delete = new Button("Deletar");
 		delete.addThemeVariants(ButtonVariant.LUMO_ERROR);
 		delete.addClickListener(e -> deletar());
+		
+		
 
 		Button btnCancelar = new Button("Cancelar");
 		btnCancelar.setWidth(250, Unit.PIXELS);
@@ -76,6 +86,20 @@ public class PesquisaBairroView extends VerticalLayout {
 		
 		Optional<Bairro> pesquisa = bairroService.pesquisarPorId(numero);
 		nomeResultado.setValue(pesquisa.get().getDescricao());
+		if(pesquisa != null) {
+			btnEditar.setVisible(true);
+		}
+	}
+	
+	public void editar() {
+		Long numero = nomeBairro.getValue().longValue();
+		
+		Optional<Bairro> pesquisa = bairroService.pesquisarPorId(numero);
+		pesquisa.get().setDescricao(nomeResultado.getValue());
+		bairroService.editarBairro(pesquisa);
+		
+		btnEditar.setVisible(false);
+		limpar();
 	}
 	
 	public void deletar() {
@@ -83,6 +107,10 @@ public class PesquisaBairroView extends VerticalLayout {
 		Long numero = nomeBairro.getValue().longValue();
 		
 		bairroService.deletarPorId(numero);
+		limpar();
+	}
+	
+	public void limpar() {
 		nomeBairro.clear();
 		nomeResultado.clear();
 	}

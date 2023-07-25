@@ -20,6 +20,16 @@ public class BairroService {
 
         bairroRepository.save(bairro);
     }
+	
+	public void editarBairro(Optional<Bairro> pesquisa) {
+		Bairro bairro = new Bairro();
+		bairro.setId(pesquisa.get().getId());
+		bairro.setDescricao(pesquisa.get().getDescricao());
+		
+		bairroRepository.save(bairro);
+		
+	}
+	
 	public Optional<Bairro> pesquisarPorId(Long id) {
 		return bairroRepository.findById(id);
 	}
