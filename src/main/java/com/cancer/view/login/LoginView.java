@@ -46,7 +46,7 @@ public class LoginView extends VerticalLayout {
         loginForm.addLoginListener(event -> {
         	if("user".equals(event.getUsername())) {
         		if("123".equals(event.getPassword())) {
-        			new TelaInicialView();
+        			UI.getCurrent().navigate(TelaInicialView.ROUTE);
         		} else {
             		Notification.show("Usuário ou senha inválidos!");
             		loginForm.setEnabled(true);
