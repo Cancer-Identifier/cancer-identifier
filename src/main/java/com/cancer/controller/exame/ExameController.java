@@ -2,6 +2,9 @@ package com.cancer.controller.exame;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -10,8 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cancer.model.entity.exame.Exame;
 import com.google.gson.Gson;
 
 @RestController
@@ -21,40 +26,45 @@ public class ExameController {
 	private ExameRepository exameRepository;
 	
 	@PutMapping(value = "/exame/{id}")
-	public void atualizarExame(@PathVariable Long id) {
+	public ResponseEntity<Exame> atualizarExame(
+			@RequestBody @Valid @NotNull String json, @PathVariable("id") @NotNull Long id) {
 		Optional<Exame> optExame = exameRepository.findById(id);
 		if (optExame.isEmpty())
-			return;
+			return ResponseEntity.notFound().build();
 		
-		exameRepository.save(optExame.get());
-		System.out.println("Registro salvo com sucesso!");
+		Exame exame = toJSON(json);
+		
+		exame.setId(optExame.get().getId());
+		
+		exameRepository.save(exame);
+		return ResponseEntity.ok(exame);
 	}
 	
 	@PostMapping(value = "/exame")
-	public void salvarExame(@RequestBody String json) {
+	public void salvarExame(@RequestBody @Valid @NotNull String json) {
 		Exame exame = toJSON(json);
 		
 		exame.setId(exameRepository.getNextId());
 		exameRepository.save(exame);
 		
-		System.out.println(ResponseEntity.ok());
+		ResponseEntity.ok();
 	}
 	
 	@GetMapping(value = "/exame/{id}")
-	public void pesquisarExame(@PathVariable Long id) {
+	public ResponseEntity<Exame> pesquisarExame(@PathVariable("id") @NotNull Long id) {
 		Optional<Exame> optExame = exameRepository.findById(id);
-		Exame exame = optExame.get();
-		System.out.println(exame.getDescricao());
+		
+		return ResponseEntity.of(optExame);
 	}
 	
 	@DeleteMapping(value = "/exame/{id}")
-	public void deletarExame(@PathVariable Long id) {
+	public ResponseEntity<Exame> deletarExame(@PathVariable("id") @NotNull Long id) {
 		Optional<Exame> optExame = exameRepository.findById(id);
 		if (optExame.isEmpty())
-			return;
+			return ResponseEntity.notFound().build();
 		
 		exameRepository.delete(optExame.get());
-		System.out.println("Registro excluido com sucesso!");
+		return ResponseEntity.ok().build();
 	}
 	
 	private Exame toJSON(String json) {
