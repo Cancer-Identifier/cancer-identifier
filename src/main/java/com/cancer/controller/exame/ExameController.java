@@ -6,6 +6,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,10 +14,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.cancer.model.entity.exame.Exame;
+import com.cancer.model.service.cadastro.ImagemService;
 import com.google.gson.Gson;
 
 @RestController
@@ -24,6 +27,9 @@ public class ExameController {
 
 	@Autowired
 	private ExameRepository exameRepository;
+	
+	@Autowired
+    private ImagemService imagemService;
 	
 	@PutMapping(value = "/exame/{id}")
 	public ResponseEntity<Exame> atualizarExame(
@@ -66,6 +72,22 @@ public class ExameController {
 		exameRepository.delete(optExame.get());
 		return ResponseEntity.ok().build();
 	}
+	
+	 @PostMapping(value = "/imagem")
+    public ResponseEntity<String> salvarImagem(@RequestParam("file") MultipartFile file) {
+        try {
+            // Verifique se o arquivo não está vazio
+            if (file.isEmpty()) {
+                return ResponseEntity.badRequest().body("O arquivo está vazio");
+            }
+
+            imagemService.salvarImagem(file);
+
+            return ResponseEntity.ok("Imagem salva com sucesso");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao salvar a imagem");
+        }
+    }
 	
 	private Exame toJSON(String json) {
 		return new Gson().fromJson(json, Exame.class);

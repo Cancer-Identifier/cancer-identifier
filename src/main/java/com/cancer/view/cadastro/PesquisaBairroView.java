@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.cancer.model.entity.cadastro.Bairro;
 import com.cancer.model.service.cadastro.BairroService;
+import com.cancer.model.service.cadastro.ImagemService;
 import com.cancer.view.home.TelaInicialView;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
@@ -29,6 +30,9 @@ public class PesquisaBairroView extends VerticalLayout {
 	
 	@Autowired
     private BairroService bairroService;
+	
+	@Autowired
+    private ImagemService imagemService;
 	
 	private NumberField nomeBairro;
 	private TextField nomeResultado;
