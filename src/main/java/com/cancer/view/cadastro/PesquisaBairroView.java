@@ -31,9 +31,6 @@ public class PesquisaBairroView extends VerticalLayout {
 	@Autowired
     private BairroService bairroService;
 	
-	@Autowired
-    private ImagemService imagemService;
-	
 	private NumberField nomeBairro;
 	private TextField nomeResultado;
 	private Button delete;

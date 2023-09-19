@@ -26,6 +26,10 @@ public class ImagemService {
 
             byte[] imagemBytes = file.getBytes();
             Imagem imagem = new Imagem();
+            
+            // Obtém o nome original do arquivo
+            String nomeArquivo = file.getOriginalFilename();
+            imagem.setDescricao(nomeArquivo);
             imagem.setImagem(imagemBytes);
             imagemRepository.save(imagem);
             System.out.println("Imagem salva com sucesso!");

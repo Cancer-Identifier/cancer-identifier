@@ -18,6 +18,9 @@ public class Imagem {
     @Lob
     @Column(name = "imagem", nullable = false)
     private byte[] imagem;
+    
+    @Column(name = "DESCRICAO")
+    private String descricao;
 
 	public Long getId() {
 		return id;
@@ -25,6 +28,14 @@ public class Imagem {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public byte[] getImagem() {

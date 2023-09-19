@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.cancer.model.entity.cadastro.Imagem;
 import com.cancer.model.entity.exame.Exame;
+import com.cancer.model.repository.cadastro.ImagemRepository;
 import com.cancer.model.service.cadastro.ImagemService;
 import com.google.gson.Gson;
 
@@ -30,6 +33,9 @@ public class ExameController {
 	
 	@Autowired
     private ImagemService imagemService;
+	
+	@Autowired
+	private ImagemRepository imagemRepository;
 	
 	@PutMapping(value = "/exame/{id}")
 	public ResponseEntity<Exame> atualizarExame(
@@ -73,19 +79,31 @@ public class ExameController {
 		return ResponseEntity.ok().build();
 	}
 	
-	 @PostMapping(value = "/imagem")
+	@PostMapping(value = "/imagem")
     public ResponseEntity<String> salvarImagem(@RequestParam("file") MultipartFile file) {
         try {
-            // Verifique se o arquivo não está vazio
+            // Verifica se o arquivo não está vazio
             if (file.isEmpty()) {
                 return ResponseEntity.badRequest().body("O arquivo está vazio");
             }
-
+            
             imagemService.salvarImagem(file);
 
             return ResponseEntity.ok("Imagem salva com sucesso");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao salvar a imagem");
+        }
+    }
+	
+	@GetMapping("/imagem/{id}")
+    public ResponseEntity<byte[]> getImagem(@PathVariable Long id) {
+        Optional<Imagem> imagemOptional = imagemRepository.findById(id);
+
+        if (imagemOptional.isPresent()) {
+            byte[] imagemBytes = imagemOptional.get().getImagem();
+            return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(imagemBytes);
+        } else {
+            return ResponseEntity.notFound().build();
         }
     }
 	
