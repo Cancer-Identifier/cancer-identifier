@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.cancer.model.entity.cadastro.Bairro;
 import com.cancer.model.service.cadastro.BairroService;
-import com.cancer.model.service.cadastro.ImagemService;
 import com.cancer.view.home.TelaInicialView;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
@@ -82,14 +81,13 @@ public class PesquisaBairroView extends VerticalLayout {
 	}
 	
 	public void pesquisar() {
-		
 		Long numero = nomeBairro.getValue().longValue();
 		
 		Optional<Bairro> pesquisa = bairroService.pesquisarPorId(numero);
 		nomeResultado.setValue(pesquisa.get().getDescricao());
-		if(pesquisa != null) {
+		
+		if(pesquisa.isPresent())
 			btnEditar.setVisible(true);
-		}
 	}
 	
 	public void editar() {

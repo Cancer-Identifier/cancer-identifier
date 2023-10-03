@@ -21,12 +21,12 @@ public class Exame {
 	private Long id;
 	
 	@Column(name = "DESCRICAO")
-	@NotNull(message = "Descrição inválida.")
+//	@NotNull(message = "Descrição inválida.")
 	private String descricao;
 	
 	@ManyToOne
 	@JoinColumn(name = "ID_TIPO")
-	@NotNull(message = "Tipo do Exame inválido.")
+//	@NotNull(message = "Tipo do Exame inválido.")
 	private TipoExame tipoExame;
 	
 	@ManyToOne
