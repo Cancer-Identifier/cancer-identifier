@@ -1,5 +1,10 @@
 package com.cancer.view.cadastro;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,7 +69,18 @@ public class PesquisaBairroView extends VerticalLayout {
 		Button btnPesquisar = new Button("Pesquisar");
 		btnPesquisar.setWidth(250, Unit.PIXELS);
 		btnPesquisar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-		btnPesquisar.addClickListener(e -> pesquisar());
+		
+		btnPesquisar.addClickListener(click -> { 	
+			HttpClient client = HttpClient.newHttpClient();
+			HttpRequest request = HttpRequest.newBuilder()
+					.GET()
+					.uri(URI.create("http://localhost:8080/exame/6"))
+					.build();
+			client.sendAsync(request, BodyHandlers.ofString())
+				.thenApply(HttpResponse::body)
+				.thenAccept(System.out::println)
+				.join();
+		});
 		
 		delete = new Button("Deletar");
 		delete.addThemeVariants(ButtonVariant.LUMO_ERROR);
