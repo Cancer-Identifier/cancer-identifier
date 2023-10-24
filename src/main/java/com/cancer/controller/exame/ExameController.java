@@ -8,7 +8,6 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -56,13 +55,13 @@ public class ExameController {
 	}
 	
 	@PostMapping(value = "/exame")
-	public void salvarExame(@RequestBody @Valid @NotNull String json) {
+	public ResponseEntity<Exame> salvarExame(@RequestBody @Valid @NotNull String json) {
 		Exame exame = toJSON(json);
 		
 		exame.setId(exameRepository.getNextId());
 		exameRepository.save(exame);
 		
-		ResponseEntity.ok();
+		return ResponseEntity.ok().build();
 	}
 	
 	@GetMapping(value = "/exame/{id}")
@@ -83,31 +82,31 @@ public class ExameController {
 	}
 	
 	@PostMapping(value = "/imagem")
-    public ResponseEntity<String> salvarImagem(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<String> salvarImagem(@RequestParam("file") @NotNull MultipartFile file, @RequestParam("text") @NotNull String json) {
         try {
-            // Verifica se o arquivo não está vazio
-            if (file.isEmpty()) {
-                return ResponseEntity.badRequest().body("O arquivo está vazio");
-            }
+            System.out.println(file.getName() + "  " + json);
             
-            imagemService.salvarImagem(file);
+            Exame exame = toJSON(json);
+            exame.setTipoExame(null);
+            exame.setId(exameRepository.getNextId());
+            exameRepository.save(exame);
+            
+            imagemService.salvarImagem(file, exame);
 
             return ResponseEntity.ok("Imagem salva com sucesso");
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao salvar a imagem");
+        	return ResponseEntity.status(500).body("Erro ao salvar a imagem: " + e.getMessage());
         }
     }
 	
 	@GetMapping("/imagem/{id}")
-    public ResponseEntity<byte[]> getImagem(@PathVariable Long id) {
+    public ResponseEntity<byte[]> getImagem(@PathVariable @NotNull @Valid Long id) {
         Optional<Imagem> imagemOptional = imagemRepository.findById(id);
-
-        if (imagemOptional.isPresent()) {
-            byte[] imagemBytes = imagemOptional.get().getImagem();
-            return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(imagemBytes);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        if (imagemOptional.isEmpty())
+        	return ResponseEntity.notFound().build();
+        
+    	byte[] imagemBytes = imagemOptional.get().getArquivo();
+    	return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(imagemBytes);
     }
     
     

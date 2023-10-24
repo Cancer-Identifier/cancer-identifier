@@ -31,7 +31,11 @@ public class BairroService {
 	}
 	
 	public Optional<Bairro> pesquisarPorId(Long id) {
-		return bairroRepository.findById(id);
+		Optional<Bairro> bairroOpt = bairroRepository.findById(id);
+		if (bairroOpt.isEmpty())
+			return Optional.empty();
+		
+		return bairroOpt;
 	}
 	
 	public void deletarPorId(Long id) {

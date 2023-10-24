@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import com.cancer.model.entity.cadastro.Paciente;
 
@@ -21,12 +20,12 @@ public class Exame {
 	private Long id;
 	
 	@Column(name = "DESCRICAO")
-	@NotNull(message = "Descrição inválida.")
+//	@NotNull(message = "Descrição inválida.")
 	private String descricao;
 	
 	@ManyToOne
 	@JoinColumn(name = "ID_TIPO")
-	@NotNull(message = "Tipo do Exame inválido.")
+//	@NotNull(message = "Tipo do Exame inválido.")
 	private TipoExame tipoExame;
 	
 	@ManyToOne

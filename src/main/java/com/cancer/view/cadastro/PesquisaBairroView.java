@@ -1,12 +1,16 @@
 package com.cancer.view.cadastro;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.cancer.model.entity.cadastro.Bairro;
 import com.cancer.model.service.cadastro.BairroService;
-import com.cancer.model.service.cadastro.ImagemService;
 import com.cancer.view.home.TelaInicialView;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
@@ -65,7 +69,18 @@ public class PesquisaBairroView extends VerticalLayout {
 		Button btnPesquisar = new Button("Pesquisar");
 		btnPesquisar.setWidth(250, Unit.PIXELS);
 		btnPesquisar.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-		btnPesquisar.addClickListener(e -> pesquisar());
+		
+		btnPesquisar.addClickListener(click -> { 	
+			HttpClient client = HttpClient.newHttpClient();
+			HttpRequest request = HttpRequest.newBuilder()
+					.GET()
+					.uri(URI.create("http://localhost:8080/exame/6"))
+					.build();
+			client.sendAsync(request, BodyHandlers.ofString())
+				.thenApply(HttpResponse::body)
+				.thenAccept(System.out::println)
+				.join();
+		});
 		
 		delete = new Button("Deletar");
 		delete.addThemeVariants(ButtonVariant.LUMO_ERROR);
@@ -82,14 +97,13 @@ public class PesquisaBairroView extends VerticalLayout {
 	}
 	
 	public void pesquisar() {
-		
 		Long numero = nomeBairro.getValue().longValue();
 		
 		Optional<Bairro> pesquisa = bairroService.pesquisarPorId(numero);
 		nomeResultado.setValue(pesquisa.get().getDescricao());
-		if(pesquisa != null) {
+		
+		if(pesquisa.isPresent())
 			btnEditar.setVisible(true);
-		}
 	}
 	
 	public void editar() {
