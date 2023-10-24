@@ -1,5 +1,7 @@
 package com.cancer.controller.exame;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -21,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cancer.model.entity.cadastro.Imagem;
 import com.cancer.model.entity.exame.Exame;
+import com.cancer.model.repository.cadastro.ImagemDTO;
 import com.cancer.model.repository.cadastro.ImagemRepository;
 import com.cancer.model.service.cadastro.ImagemService;
 import com.google.gson.Gson;
@@ -106,6 +109,24 @@ public class ExameController {
             return ResponseEntity.notFound().build();
         }
     }
+    
+    
+    @GetMapping("/pesquisa")
+    public ResponseEntity<List<ImagemDTO>> pesquisarTodasImagens() {
+        List<Imagem> imagens = imagemRepository.findAll();
+
+        List<ImagemDTO> imagensDTO = new ArrayList<>();
+        for (Imagem imagem : imagens) {
+            ImagemDTO imagemDTO = new ImagemDTO();
+            imagemDTO.setId(imagem.getId());
+            imagemDTO.setDescricao(imagem.getDescricao());
+            imagensDTO.add(imagemDTO);
+        }
+
+        return ResponseEntity.ok(imagensDTO);
+    }
+
+
 	
 	private Exame toJSON(String json) {
 		return new Gson().fromJson(json, Exame.class);
