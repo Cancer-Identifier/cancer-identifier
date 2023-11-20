@@ -100,7 +100,7 @@ public class ExameController {
     }
 	
 	@PostMapping(value = "/somente_imagem")
-	public ResponseEntity<String> salvarImagem(@NotNull byte[] file) {
+	public ResponseEntity<String> salvarImagem(@RequestBody @NotNull byte[] file) {
 		try {
 			if (file == null)
 				throw new Exception("DEu ruim");
