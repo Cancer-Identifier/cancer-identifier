@@ -74,7 +74,7 @@ public class PesquisaBairroView extends VerticalLayout {
 			HttpClient client = HttpClient.newHttpClient();
 			HttpRequest request = HttpRequest.newBuilder()
 					.GET()
-					.uri(URI.create("http://localhost:8080/exame/6"))
+					.uri(URI.create("http://localhost:8080/exame/1"))
 					.build();
 			client.sendAsync(request, BodyHandlers.ofString())
 				.thenApply(HttpResponse::body)
@@ -86,8 +86,6 @@ public class PesquisaBairroView extends VerticalLayout {
 		delete.addThemeVariants(ButtonVariant.LUMO_ERROR);
 		delete.addClickListener(e -> deletar());
 		
-		
-
 		Button btnCancelar = new Button("Cancelar");
 		btnCancelar.setWidth(250, Unit.PIXELS);
 		btnCancelar.addClickListener(click -> btnCancelar.getUI().ifPresent(ui -> ui.navigate(TelaInicialView.ROUTE)));

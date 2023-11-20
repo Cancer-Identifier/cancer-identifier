@@ -99,6 +99,20 @@ public class ExameController {
         }
     }
 	
+	@PostMapping(value = "/somente_imagem")
+	public ResponseEntity<String> salvarImagem(@NotNull byte[] file) {
+		try {
+			if (file == null)
+				throw new Exception("DEu ruim");
+			
+			imagemService.salvarImagem(file);
+			
+			return ResponseEntity.ok("Imagem salva com sucesso");
+		} catch (Exception e) {
+			return ResponseEntity.status(500).body("Erro ao salvar a imagem: " + e.getMessage());
+		}
+	}
+	
 	@GetMapping("/imagem/{id}")
     public ResponseEntity<byte[]> getImagem(@PathVariable @NotNull @Valid Long id) {
         Optional<Imagem> imagemOptional = imagemRepository.findById(id);

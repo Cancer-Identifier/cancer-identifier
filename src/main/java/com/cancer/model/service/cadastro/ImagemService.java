@@ -16,6 +16,14 @@ public class ImagemService {
 
     @Autowired
     private ImagemRepository imagemRepository;
+    
+    public void salvarImagem(byte[] file) {
+    	Imagem imagem = new Imagem();
+    	
+        imagem.setArquivo(file);
+        
+        imagemRepository.save(imagem);
+    }
 
     @Transactional
     public void salvarImagem(MultipartFile file, Exame exame) {
