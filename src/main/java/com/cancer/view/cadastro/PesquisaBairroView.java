@@ -30,7 +30,7 @@ public class PesquisaBairroView extends VerticalLayout {
 
 	private static final long serialVersionUID = -4342722110494292850L;
 
-	private static final String ROUTE = "app-pesquisa-bairro";
+	public static final String ROUTE = "app-pesquisa-bairro";
 	
 	@Autowired
     private BairroService bairroService;

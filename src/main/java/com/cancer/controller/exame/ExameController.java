@@ -8,8 +8,11 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +22,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.http.*;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import com.cancer.model.entity.cadastro.Imagem;
 import com.cancer.model.entity.exame.Exame;
@@ -100,7 +106,7 @@ public class ExameController {
     }
 	
 	@PostMapping(value = "/somente_imagem")
-	public ResponseEntity<String> salvarImagem(@NotNull byte[] file) {
+	public ResponseEntity<String> salvarImagem(@RequestBody @NotNull byte[] file) {
 		try {
 			if (file == null)
 				throw new Exception("DEu ruim");
@@ -112,6 +118,40 @@ public class ExameController {
 			return ResponseEntity.status(500).body("Erro ao salvar a imagem: " + e.getMessage());
 		}
 	}
+	
+	@PostMapping(value = "/enviarImagem")
+    public ResponseEntity<String> enviarIamgem(@RequestBody @NotNull byte[] file) {
+        try {
+            if (file == null)
+                throw new Exception("Deu ruim");
+
+            imagemService.salvarImagem(file);
+
+            // Enviar a imagem para o endpoint Python
+            final String uri = "http://localhost:5000/receberImagem"; // Substitua pela URL do seu endpoint Python
+            
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+            
+            MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
+            body.add("file", new ByteArrayResource(file));
+            
+            HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
+            
+            RestTemplate restTemplate = new RestTemplate();
+            
+            ResponseEntity<String> responseEntity = restTemplate.postForEntity(uri, requestEntity, String.class);
+            
+            // Verificar a resposta do endpoint Python
+            if (responseEntity.getStatusCode() == HttpStatus.OK) {
+                return ResponseEntity.ok("Imagem salva com sucesso e enviada para o endpoint Python");
+            } else {
+                return ResponseEntity.status(500).body("Erro ao enviar a imagem para o endpoint Python");
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Erro ao salvar a imagem: " + e.getMessage());
+        }
+    }
 	
 	@GetMapping("/imagem/{id}")
     public ResponseEntity<byte[]> getImagem(@PathVariable @NotNull @Valid Long id) {

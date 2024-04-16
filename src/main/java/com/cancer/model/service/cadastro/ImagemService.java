@@ -20,6 +20,8 @@ public class ImagemService {
     public void salvarImagem(byte[] file) {
     	Imagem imagem = new Imagem();
     	
+    	String nomeArquivo = file.toString();
+        imagem.setDescricao(nomeArquivo);
         imagem.setArquivo(file);
         
         imagemRepository.save(imagem);
@@ -32,7 +34,6 @@ public class ImagemService {
             
             Imagem imagem = new Imagem();
             
-            // Obtém o nome original do arquivo
             String nomeArquivo = file.getOriginalFilename();
             imagem.setDescricao(nomeArquivo);
             imagem.setArquivo(imagemBytes);

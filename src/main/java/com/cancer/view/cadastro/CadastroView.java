@@ -32,7 +32,7 @@ public class CadastroView  extends VerticalLayout {
 
 	private static final long serialVersionUID = 8529351529550322503L;
 	
-	private static final String ROUTE = "app-cadastro-usuario";
+	public static final String ROUTE = "app-cadastro-usuario";
 
 	private List<String> items = new ArrayList<>(Arrays.asList(TipoUsuarioRepository.MEDICO.getDescricao(), TipoUsuarioRepository.SECRETARIA.getDescricao()));
 	private TextField txtNome;

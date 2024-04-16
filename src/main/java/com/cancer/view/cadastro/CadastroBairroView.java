@@ -23,7 +23,7 @@ public class CadastroBairroView extends VerticalLayout {
 	
 	private static final long serialVersionUID = -7740129687089752129L;
 	
-	private static final String ROUTE = "app-cadastro-bairro";
+	public static final String ROUTE = "app-cadastro-bairro";
 	
 	private TextField nomeBairro;
 

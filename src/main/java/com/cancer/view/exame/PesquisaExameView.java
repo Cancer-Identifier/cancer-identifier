@@ -18,7 +18,7 @@ public class PesquisaExameView extends VerticalLayout {
 
 	private static final long serialVersionUID = -4342722110494292850L;
 
-	private static final String ROUTE = "app-pesquisa-exame";
+	public static final String ROUTE = "app-pesquisa-exame";
 
 	public PesquisaExameView() {
 
