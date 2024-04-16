@@ -9,9 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "PACIENTES")
-public class Paciente {
-
+@Table(name = "USUARIO")
+public class Usuario {
+	
 	@Id
 	@GeneratedValue
 	@Column(name = "ID")
@@ -19,6 +19,12 @@ public class Paciente {
 
 	@Column(name = "NOME")
 	private String nome;
+	
+	@Column(name = "EMAIL")
+	private String email;
+	
+	@Column(name = "SENHA")
+	private String senha;
 	
 	@Column(name = "RG")
 	private Long rg;
@@ -28,9 +34,6 @@ public class Paciente {
 	
 	@Column(name = "DATA_NASCIMENTO")
 	private Date dataNascimento;
-	
-	@Column(name = "ENDERECO")
-	private String endero;
 
 	public Long getId() {
 		return id;
@@ -46,6 +49,22 @@ public class Paciente {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public Long getRg() {
@@ -70,14 +89,6 @@ public class Paciente {
 
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
-	}
-
-	public String getEndero() {
-		return endero;
-	}
-
-	public void setEndero(String endero) {
-		this.endero = endero;
 	}
 	
 }
