@@ -1,5 +1,6 @@
 package com.cancer.controller.cadastro;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -7,6 +8,7 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,6 +43,24 @@ public class CadastrarPacienteController {
 		
 		pacienteRepository.save(exame);
 		return ResponseEntity.ok(exame);
+	}
+	
+	@GetMapping(value = "/paciente/{id}")
+	public ResponseEntity<Paciente> pesquisarUsuario(@PathVariable @NotNull Long id) {
+		Optional<Paciente> optPaciente = pacienteRepository.findById(id);
+		if (optPaciente.isEmpty())
+			return ResponseEntity.notFound().build();
+		
+		return ResponseEntity.ok(optPaciente.get());
+	}
+	
+	@GetMapping(value = "/paciente")
+	public ResponseEntity<List<Paciente>> pesquisarTodosUsuarios() {
+		List<Paciente> listPacientes = pacienteRepository.findAll();
+		if (listPacientes.isEmpty())
+			return ResponseEntity.notFound().build();
+		
+		return ResponseEntity.ok(listPacientes);
 	}
 	
 	private Paciente toJSON(String json) {
