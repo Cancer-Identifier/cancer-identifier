@@ -1,26 +1,39 @@
 version: '3.8'
+      
+volumes:
+  oracle_data:
+    driver: local
+
+networks:
+  oracle-net:
 
 services:
-  novoOracle:
-    image: docker.io/gvenzl/oracle-xe:latest
-    container_name: 'novoOracle'
+  oraclecancer:
+    image: docker.io/gvenzl/oracle-free
+    container_name: 'oraclecancer'
     ports:
       - "1521:1521"
-      - "5500:5500"
     environment:
       ORACLE_PASSWORD: teste
       APP_USER: usertest
       APP_USER_PASSWORD: teste
     volumes:
       - oracle_data:/opt/oracle/oradata
-      - oracle-logs:/opt/oracle/logs
     networks:
       - oracle-net
 
-volumes:
-  oracle_data:
-    driver: local
-  oracle-logs:
-
-networks:
-  oracle-net:
+  api_cancer:
+    container_name: api_cancer
+    build:
+      context: .
+      dockerfile: ./DockerFile
+    restart: on-failure
+    working_dir: /app
+    ports:
+      - '8080:8080'  
+    depends_on:
+      - oraclecancer
+    networks:
+      - oracle-net
+    environment:
+      - spring.datasource.url=jdbc:oracle:thin:@oraclecancer:1521:free
