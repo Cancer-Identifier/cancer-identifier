@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -61,7 +62,19 @@ public class CadastrarUsuarioController {
 			return ResponseEntity.notFound().build();
 		
 		return ResponseEntity.ok(listPacientes);
-	}
+	} 
+	
+	 @PostMapping("/login")
+	 public ResponseEntity<Boolean> login(@RequestBody @Valid @NotNull  String loginRequest) {
+        // Verifica se o email e a senha correspondem a um registro no banco de dados
+		Usuario usuarioJson = toJSON(loginRequest);
+        Usuario usuario = usuarioRepository.findByEmailAndSenha(usuarioJson.getEmail(), usuarioJson.getSenha());
+        if (usuario != null) {
+            return ResponseEntity.ok(true);
+        } else {
+            return ResponseEntity.ok(false);
+        }
+	  }
 	
 	private Usuario toJSON(String json) {
 		return new Gson().fromJson(json, Usuario.class);

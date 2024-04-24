@@ -1,0 +1,14 @@
+# Use uma imagem base que inclua o Java
+FROM openjdk:17
+
+# Defina o diretório de trabalho dentro do contêiner
+WORKDIR /app
+
+# Copie o arquivo JAR da sua aplicação para o contêiner
+COPY cancer-identifier.jar /app/cancer-identifier.jar
+
+# Exponha a porta em que sua aplicação está escutando (porta 8080)
+EXPOSE 8080
+
+# Comando para iniciar sua aplicação quando o contêiner for iniciado
+CMD ["java", "-jar", "cancer-identifier.jar"]

@@ -9,4 +9,6 @@ import com.cancer.model.entity.cadastro.Usuario;
 @Repository
 public interface UsuarioRepository extends CrudRepository<Usuario, Long>, JpaRepository<Usuario, Long> {
 	
+    Usuario findByEmailAndSenha(String email, String senha);
+
 }
