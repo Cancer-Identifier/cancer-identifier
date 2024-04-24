@@ -1,7 +1,10 @@
 #!/bin/bash
 
-# Inicie o serviço do banco de dados Oracle
-service oracle-xe start
+# Iniciar serviços usando o Docker Compose
+docker-compose up -d
 
-# Inicie sua aplicação
+# Aguardar um breve momento para que os serviços inicializem completamente
+sleep 10
+
+# Continuar a execução do script
 exec "$@"
