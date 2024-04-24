@@ -1,10 +1,14 @@
-FROM docker.io/gvenzl/oracle-xe:latest
+# Use uma imagem base que inclua o Java
+FROM openjdk:17
 
-# Copie o script de inicialização para dentro do contêiner
-COPY entrypoint.sh /entrypoint.sh
+# Defina o diretório de trabalho dentro do contêiner
+WORKDIR /app
 
-# Defina as permissões de execução para o script
-RUN chmod +x /entrypoint.sh
+# Copie o arquivo JAR da sua aplicação para o contêiner
+COPY /target/cancer-identifier-1.0-SNAPSHOT.jar /cancer-identifier-1.0-SNAPSHOT.jar
 
-# Defina o comando padrão a ser executado quando o contêiner for iniciado
-CMD ["/entrypoint.sh"]
+# Exponha a porta em que sua aplicação está escutando (porta 8080)
+EXPOSE 8080
+
+# Comando para iniciar sua aplicação quando o contêiner for iniciado
+CMD ["java", "-jar", "/cancer-identifier-1.0-SNAPSHOT.jar"]

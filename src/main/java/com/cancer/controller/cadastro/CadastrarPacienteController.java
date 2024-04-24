@@ -55,7 +55,7 @@ public class CadastrarPacienteController {
 	}
 	
 	@GetMapping(value = "/paciente")
-	public ResponseEntity<List<Paciente>> pesquisarTodosUsuarios() {
+	public ResponseEntity<List<Paciente>> pesquisarTodosPacientes() {
 		List<Paciente> listPacientes = pacienteRepository.findAll();
 		if (listPacientes.isEmpty())
 			return ResponseEntity.notFound().build();
