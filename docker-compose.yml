@@ -37,3 +37,11 @@ services:
       - oracle-net
     environment:
       - spring.datasource.url=jdbc:oracle:thin:@oraclecancer:1521:free
+    command: >
+      bash -c "
+      while ! nc -z oraclecancer 1521; do
+        echo 'Esperando pelo serviço Oracle...';
+        sleep 1;
+      done;
+      java -jar cancer-identifier-1.0-SNAPSHOT.jar"
+
