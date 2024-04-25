@@ -36,5 +36,5 @@ services:
     networks:
       - oracle-net
     environment:
-      - DATABASE_JDBC_URL=jdbc:oracle:thin:@oraclecancer:1521:free
+      - DATABASEURL=jdbc:oracle:thin:@oraclecancer:1521:free
 
