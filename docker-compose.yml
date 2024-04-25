@@ -36,4 +36,4 @@ services:
     networks:
       - oracle-net
     environment:
-      - spring.datasource.url=jdbc:oracle:thin:@oraclecancer:1521:free
+      -DATABASEURL: jdbc:oracle:thin:@oraclecancer:1521:free
