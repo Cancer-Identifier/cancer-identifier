@@ -10,5 +10,5 @@ COPY /target/cancer-identifier-1.0-SNAPSHOT.jar /cancer-identifier-1.0-SNAPSHOT.
 # Exponha a porta em que sua aplicação está escutando (porta 8080)
 EXPOSE 8080
 
-# Comando para iniciar sua aplicação quando o contêiner for iniciado
+# Comando para iniciar sua aplicação quando o contêiner for iniciadoo
 CMD ["java", "-jar", "/cancer-identifier-1.0-SNAPSHOT.jar"]
