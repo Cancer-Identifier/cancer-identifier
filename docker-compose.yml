@@ -5,22 +5,22 @@ volumes:
     driver: local
 
 networks:
-  oracle-net:
+  postgres-net:
 
 services:
-  oraclecancer:
-    image: docker.io/gvenzl/oracle-free
-    container_name: 'oraclecancer'
+  postgres_db:
+    image: postgres
+    container_name: 'postgres_db'
     ports:
-      - "1521:1521"
+      - "5432:5432"
     environment:
-      ORACLE_PASSWORD: teste
-      APP_USER: usertest
+      POSTGRES_PASSWORD: teste
+      APP_USER: postgres
       APP_USER_PASSWORD: teste
     volumes:
-      - oracle_data:/opt/oracle/oradata
+      - /var/lib/postgresql:/var/lib/postgresql
     networks:
-      - oracle-net
+      - postgres-net
 
   api_cancer:
     container_name: api_cancer
@@ -32,8 +32,8 @@ services:
     ports:
       - '8080:8080'  
     depends_on:
-      - oraclecancer
+      - postgres_db
     networks:
-      - oracle-net
+      - postgres-net
     environment:
       -DATABASEURL: jdbc:oracle:thin:@oraclecancer:1521:free
