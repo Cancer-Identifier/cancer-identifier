@@ -6,6 +6,7 @@ import com.cancer.view.cadastro.PesquisaBairroView;
 import com.cancer.view.exame.PesquisaExameView;
 import com.cancer.view.login.LoginView;
 import com.cancer.view.paciente.CadastrarPacienteView;
+import com.cancer.view.paciente.GridPaciente;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H1;
@@ -51,7 +52,7 @@ public class TelaInicialView extends VerticalLayout {
 		
 		Button btnPerfilUsuario = new Button("Perfil do usuário");
 		btnPerfilUsuario.setWidth(250, Unit.PIXELS);
-		btnPerfilUsuario.addClickListener(click -> btnPerfilUsuario.getUI().ifPresent(ui -> ui.navigate(CadastroView.getRoute())));
+		btnPerfilUsuario.addClickListener(click -> btnPerfilUsuario.getUI().ifPresent(ui -> ui.navigate(GridPaciente.getRoute())));
 		add(btnPerfilUsuario);
 		
 		Button btnPesquisa = new Button("Pesquisar Bairro");

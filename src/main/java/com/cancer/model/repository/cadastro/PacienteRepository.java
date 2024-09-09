@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import com.cancer.model.entity.cadastro.Paciente;
 
 @Repository
-public interface PacienteRepository extends CrudRepository<Paciente, Long>, JpaRepository<Paciente, Long> {
+public interface PacienteRepository extends JpaRepository<Paciente, Long> {
 	
 }
