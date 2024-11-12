@@ -1,6 +1,6 @@
 package com.cancer.model.entity.exame;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,10 +23,10 @@ public class Exame {
 //	@NotNull(message = "Descrição inválida.")
 	private String descricao;
 	
-	@ManyToOne
-	@JoinColumn(name = "ID_TIPO")
+//	@ManyToOne
+//	@JoinColumn(name = "ID_TIPO")
 //	@NotNull(message = "Tipo do Exame inválido.")
-	private TipoExame tipoExame;
+//	private TipoExame tipoExame;
 	
 	@ManyToOne
 	@JoinColumn(name = "ID_PACIENTE")
@@ -37,7 +37,7 @@ public class Exame {
 	private byte[] anexo;*/
 	
 	@Column(name = "DATA_EXAMES")
-	private Date dataExames;
+	private LocalDate dataExames;
 
 	public Long getId() {
 		return id;
@@ -55,13 +55,13 @@ public class Exame {
 		this.descricao = descricao;
 	}
 
-	public TipoExame getTipoExame() {
-		return tipoExame;
-	}
-
-	public void setTipoExame(TipoExame tipoExame) {
-		this.tipoExame = tipoExame;
-	}
+//	public TipoExame getTipoExame() {
+//		return tipoExame;
+//	}
+//
+//	public void setTipoExame(TipoExame tipoExame) {
+//		this.tipoExame = tipoExame;
+//	}
 
 	public Paciente getPaciente() {
 		return paciente;
@@ -69,6 +69,14 @@ public class Exame {
 
 	public void setPaciente(Paciente paciente) {
 		this.paciente = paciente;
+	}
+
+	public LocalDate getDataExames() {
+		return dataExames;
+	}
+
+	public void setDataExames(LocalDate dataExames) {
+		this.dataExames = dataExames;
 	}
 	
 }

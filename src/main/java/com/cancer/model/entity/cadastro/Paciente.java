@@ -20,17 +20,17 @@ public class Paciente {
 	@Column(name = "NOME")
 	private String nome;
 	
-	@Column(name = "RG")
-	private Long rg;
-	
 	@Column(name = "CPF")
 	private Long cpf;
 	
 	@Column(name = "DATA_NASCIMENTO")
 	private Date dataNascimento;
 	
-	@Column(name = "ENDERECO")
-	private String endero;
+	@Column(name = "EMAIL")
+	private String email;
+	
+	@Column(name = "TELEFONE")
+	private String telefone;
 
 	public Long getId() {
 		return id;
@@ -46,14 +46,6 @@ public class Paciente {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public Long getRg() {
-		return rg;
-	}
-
-	public void setRg(Long rg) {
-		this.rg = rg;
 	}
 
 	public Long getCpf() {
@@ -72,12 +64,19 @@ public class Paciente {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public String getEndero() {
-		return endero;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setEndero(String endero) {
-		this.endero = endero;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
 }

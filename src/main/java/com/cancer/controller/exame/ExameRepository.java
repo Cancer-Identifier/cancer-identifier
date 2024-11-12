@@ -1,5 +1,8 @@
 package com.cancer.controller.exame;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -19,4 +22,6 @@ public interface ExameRepository extends CrudRepository<Exame, Long>, JpaSpecifi
 			return lastId + 1;
 		return 1L;
 	}
+	
+    Optional<Exame> findFirstByPacienteId(Long idPaciente);
 }

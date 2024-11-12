@@ -45,25 +45,25 @@ public class TelaInicialView extends VerticalLayout {
 		btnCadastrarPaciente.addClickListener(click -> btnCadastrarPaciente.getUI().ifPresent(ui -> ui.navigate(CadastrarPacienteView.ROUTE)));
 		add(btnCadastrarPaciente);
 		
-		Button btnBuscarPaciente = new Button("Cadastrar Bairro");
-		btnBuscarPaciente.setWidth(250, Unit.PIXELS);
-		btnBuscarPaciente.addClickListener(click -> btnBuscarPaciente.getUI().ifPresent(ui -> ui.navigate(CadastroBairroView.getRoute())));
-		add(btnBuscarPaciente);
+//		Button btnBuscarPaciente = new Button("Cadastrar Bairro");
+//		btnBuscarPaciente.setWidth(250, Unit.PIXELS);
+//		btnBuscarPaciente.addClickListener(click -> btnBuscarPaciente.getUI().ifPresent(ui -> ui.navigate(CadastroBairroView.getRoute())));
+//		add(btnBuscarPaciente);
 		
-		Button btnPerfilUsuario = new Button("Perfil do usuário");
+		Button btnPerfilUsuario = new Button("Pesquisar Pacientes");
 		btnPerfilUsuario.setWidth(250, Unit.PIXELS);
 		btnPerfilUsuario.addClickListener(click -> btnPerfilUsuario.getUI().ifPresent(ui -> ui.navigate(GridPaciente.getRoute())));
 		add(btnPerfilUsuario);
 		
-		Button btnPesquisa = new Button("Pesquisar Bairro");
-		btnPesquisa.setWidth(250, Unit.PIXELS);
-		btnPesquisa.addClickListener(click -> btnPesquisa.getUI().ifPresent(ui -> ui.navigate(PesquisaBairroView.getRoute())));
-		add(btnPesquisa);
-		
-		Button btnPesquisaExame = new Button("Pesquisar Exame");
-		btnPesquisaExame.setWidth(250, Unit.PIXELS);
-		btnPesquisaExame.addClickListener(click -> btnPesquisaExame.getUI().ifPresent(ui -> ui.navigate(PesquisaExameView.getRoute())));
-		add(btnPesquisaExame);
+//		Button btnPesquisa = new Button("Pesquisar Bairro");
+//		btnPesquisa.setWidth(250, Unit.PIXELS);
+//		btnPesquisa.addClickListener(click -> btnPesquisa.getUI().ifPresent(ui -> ui.navigate(PesquisaBairroView.getRoute())));
+//		add(btnPesquisa);
+//		
+//		Button btnPesquisaExame = new Button("Pesquisar Exame");
+//		btnPesquisaExame.setWidth(250, Unit.PIXELS);
+//		btnPesquisaExame.addClickListener(click -> btnPesquisaExame.getUI().ifPresent(ui -> ui.navigate(PesquisaExameView.getRoute())));
+//		add(btnPesquisaExame);
 
 		Button btnSair = new Button("Sair");
 		btnSair.setWidth(150, Unit.PIXELS);
