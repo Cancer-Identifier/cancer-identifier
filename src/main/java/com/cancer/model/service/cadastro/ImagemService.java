@@ -1,6 +1,7 @@
 package com.cancer.model.service.cadastro;
 
 import java.io.IOException;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,10 +18,27 @@ public class ImagemService {
     @Autowired
     private ImagemRepository imagemRepository;
     
+    @Autowired
+	private ExameService exameService;
+    
     public void salvarImagem(byte[] file) {
     	Imagem imagem = new Imagem();
     	
     	String nomeArquivo = file.toString();
+    	
+        imagem.setDescricao(nomeArquivo);
+        imagem.setArquivo(file);
+        
+        imagemRepository.save(imagem);
+    }
+    
+    public void salvarImagem(byte[] file, Long id) {
+    	Imagem imagem = new Imagem();
+    		
+    	String nomeArquivo = file.toString();
+    	Optional<Exame> exame = exameService.pesquisaExamePorPaciente(id);
+    	
+    	imagem.setExame(exame.get());
         imagem.setDescricao(nomeArquivo);
         imagem.setArquivo(file);
         

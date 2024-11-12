@@ -93,7 +93,7 @@ public class ExameController {
             System.out.println(file.getName() + "  " + json);
             
             Exame exame = toJSON(json);
-            exame.setTipoExame(null);
+//            exame.setTipoExame(null);
             exame.setId(exameRepository.getNextId());
             exameRepository.save(exame);
             
@@ -117,6 +117,17 @@ public class ExameController {
 		} catch (Exception e) {
 			return ResponseEntity.status(500).body("Erro ao salvar a imagem: " + e.getMessage());
 		}
+	}
+	
+	@GetMapping(value = "/imagem/exame/{idExame}", produces = MediaType.IMAGE_JPEG_VALUE)
+	public ResponseEntity<byte[]> buscarImagemPorExame(@PathVariable Long idExame) {
+	    Optional<Imagem> imagem = imagemRepository.findByExameId(idExame);
+
+	    if (imagem.isPresent()) {
+	        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(imagem.get().getArquivo());
+	    } else {
+	        return ResponseEntity.status(404).body(null); // Retorna 404 se não encontrar a imagem
+	    }
 	}
 	
 	@PostMapping(value = "/enviarImagem")
